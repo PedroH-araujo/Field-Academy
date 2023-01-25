@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+:root{
+   --color-primary:hsl(220, 98%, 61%);
+}
+
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Josefin Sans', sans-serif;
+   font-size: 18px;
+}
+
+body{
+   height: 500px;
+   background-image: url(images/bg-mobile-light.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+   height: 300px;
+}
+
+.dark{
+   background-image: url(images/bg-mobile-dark.jpg);
+   background-color: black;
+}
+
+
+
+header{
+   padding-top: 50px;
+   display: flex;
+   justify-content: space-around;
+}
+
+header > h1{
+   color: hsl(0, 0%, 98%);
+   font-weight: 700;
+   font-size: 30px;
+   letter-spacing: 15px;
+}
+
+header > button{
+   
+}
+
+.sun{
+   display: none;
+   cursor: pointer;
+}
+
+.moon{
+   cursor: pointer;
+}
+
+.list {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.list > input {
+   margin: 20px 0;
+   padding: 10px;
+   border-radius: 15px;
+   border: none;
+}
+
+.list ul {
+   border: 1px solid black;
+   border-radius: 5px;
+}
+
+.list li{
+   border-bottom: 1px solid black;
+   background-color: white;
+   height: 30px;
+   line-height: 35px;
+}
+
+.list li:last-child{
+   border: 0;
+}
+
+.list li:first-child{
+   border-radius: 5px 5px 0 0;
+}
+
+.list li:last-child{
+   border-radius: 0 0 5px 5px;
+}
+
+.select-status{
+   display: flex;
+   flex-direction: row;
+   background-color: white;
+   border: 1px solid black;
+   margin-top: 10px;
+   width: 163px;
+   justify-content: space-evenly;
+}
+
+.select-status > p{
+   font-size: 12px;
+   height: 30px;
+   line-height: 30px;
+}
+
