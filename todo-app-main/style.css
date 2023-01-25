@@ -18,14 +18,8 @@ body{
    background-repeat: no-repeat;
    background-size: cover;
    height: 300px;
+   background-color: hsl(236, 33%, 92%)
 }
-
-.dark{
-   background-image: url(images/bg-mobile-dark.jpg);
-   background-color: black;
-}
-
-
 
 header{
    padding-top: 50px;
@@ -40,10 +34,6 @@ header > h1{
    letter-spacing: 15px;
 }
 
-header > button{
-   
-}
-
 .sun{
    display: none;
    cursor: pointer;
@@ -53,48 +43,78 @@ header > button{
    cursor: pointer;
 }
 
-.list {
+.divList {
    display: flex;
    flex-direction: column;
    align-items: center;
 }
 
-.list > input {
+.divList > input {
    margin: 20px 0;
    padding: 10px;
-   border-radius: 15px;
+   border-radius: 5px;
    border: none;
 }
 
-.list ul {
-   border: 1px solid black;
-   border-radius: 5px;
+.divList ul {
+   border: 1px solid rgb(181, 181, 181);
+   border-radius: 6px 6px 0 0;
+   width: 200px;
 }
 
-.list li{
-   border-bottom: 1px solid black;
+.list-item{
+   display: flex;
+   border-bottom: 1px solid rgb(181, 181, 181);
    background-color: white;
    height: 30px;
-   line-height: 35px;
+   justify-content: space-around;
+   align-items: center;
 }
 
-.list li:last-child{
+.divList li:last-child{
    border: 0;
 }
 
-.list li:first-child{
+.divList li:first-child{
    border-radius: 5px 5px 0 0;
 }
 
-.list li:last-child{
-   border-radius: 0 0 5px 5px;
+
+.divList img{
+   width: 8%;
+} 
+
+#checkbox:checked + p{
+   text-decoration: line-through;
+   color: rgb(158, 159, 159);
+}
+
+.list-final{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   color: rgb(181, 181, 181);
+   background-color: white;
+   height: 30px;
+   width: 200px;
+   border-radius: 1px 1px 5px 5px;
+   align-items: center;
+   border: 0
+}
+
+.list-final > p{
+   font-size: 10px;
+}
+
+#iLeft, #limpaCheck{
+   cursor: pointer;
 }
 
 .select-status{
    display: flex;
    flex-direction: row;
    background-color: white;
-   border: 1px solid black;
+   border-radius: 10px;
    margin-top: 10px;
    width: 163px;
    justify-content: space-evenly;
@@ -106,3 +126,15 @@ header > button{
    line-height: 30px;
 }
 
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DARK MODE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+
+
+.dark{
+   background-image: url(images/bg-mobile-dark.jpg);
+   background-color: hsl(235, 21%, 11%);
+}
+
+.dark-list{
+   background-color: hsl(235, 24%, 19%);
+   color: rgb(255, 255, 255);
+}
