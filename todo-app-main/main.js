@@ -31,26 +31,24 @@ novoItem.addEventListener("keydown", function (event) {
       criaItemLista(novoItem.value)
       let itens = document.querySelector("#lista")
       lista.push(itens.lastElementChild)
-      // checkboxList.push(itens.lastElementChild.firstElementChild)
       novoItem.value = ''
-      // checkboxList.forEach(checkItem)
       contagemDeItens()
    }
 })
 let itens = document.querySelector("#lista")
 
 function criaItemLista(conteudo) {
+   const detectaDark = document.body.classList.contains("dark")
    let item = document.createElement("li")
    item.classList.add("list-item")
    item.classList.add("item")
    item.classList.add("no-check")
+   if(detectaDark){
+      item.classList.add("dark-list")
+   }
    item.innerHTML = `
-
    <img src="images/icon-check.svg " class="checkbox" onclick="checkElemento(this, this.parentNode)"> <p>${conteudo}</p> <img src="images/icon-cross.svg" id="del" onclick="deletaElemento(this.parentNode)">
-
-
    `
-   // <input type="checkbox" id="checkbox" onchange="checkElemento(event,this.parentNode)"> <p>${conteudo}</p> <img src="images/icon-cross.svg" id="del" onclick="deletaElemento(this.parentNode)">
    listaItens.appendChild(item)
 }
 
@@ -89,22 +87,6 @@ function contagemDeItens() {
 //Dar CHECK nos itens
 let checkboxList = []
 
-// function checkItem(e, indice) {
-//    checkboxList[indice].addEventListener("change", () => {
-//       if(checkboxList[indice].checked) {
-//          // Checkbox está selecionado.
-//          lista[indice].classList.add("check")
-//          lista[indice].classList.remove("no-check")
-//          console.log(lista[indice])
-//       } else {
-//         lista[indice].classList.remove("check")
-//         lista[indice].classList.add("no-check")
-//         console.log(lista[indice])
-//          // Checkbox não está selecionado.
-//      }
-//       contagemDeItens()
-//    })
-// }
 
 function checkElemento(filho, pai) {
    if(!filho.classList.contains("checado")){
@@ -125,38 +107,6 @@ function checkElemento(filho, pai) {
 }
 
 
-// filho.setAttribute('id','check')
-// pai.classList.add("check")
-
-
-// function checkElemento(event, pai) {
-//    if (event.currentTarget.checked) {
-//       pai.classList.add("check")
-//       pai.classList.remove("no-check")
-//    } else {
-//       pai.classList.remove("check")
-//       pai.classList.add("no-check")
-//    }
-//    contagemDeItens()
-//  }
-
-// function checkElemento(elemento){
-//    if(this.target) {
-//       // Checkbox está selecionado.
-//       // lista[indice].classList.add("check")
-//       // lista[indice].classList.remove("no-check")
-//       // console.log(lista[indice])
-//       console.log("check")
-//    } else {
-//    //   lista[indice].classList.remove("check")
-//    //   lista[indice].classList.add("no-check")
-//    //   console.log(lista[indice])
-//       // Checkbox não está selecionado.
-//       console.log("uncheck")
-//   }
-// }
-
-//Limpar os itens completos
 const clear = document.querySelector("#limpaCheck")
 
 clear.addEventListener("click", function check() {
@@ -169,9 +119,6 @@ clear.addEventListener("click", function check() {
 const all = document.querySelector("#todos")
 const ativos = document.querySelector("#ativos")
 const completados = document.querySelector("#completados")
-const tau = document.querySelector(".select-status")
-
-//tau.addEventListener("click")
 
 
 listaItens.addEventListener("click", () => {
@@ -183,8 +130,7 @@ function pegaItens(){
    listCheck = lista.filter(e => e.classList.contains("check"))
    listUnCheck = lista.filter(e => e.classList.contains("no-check"))
    console.log(listCheck,listUnCheck)
-   //Array.from(item).forEach(e => listUnCheck.push(e))
-   //Array.from(item).forEach(e => listCheck.push(e))
+
 }
 
 all.addEventListener("click", () => {

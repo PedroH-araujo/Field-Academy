@@ -13,12 +13,11 @@
 }
 
 body{
-   height: 500px;
    background-image: url(images/bg-mobile-light.jpg);
    background-repeat: no-repeat;
    background-size: cover;
-   height: 300px;
-   background-color: hsl(236, 33%, 92%)
+   background-color: hsl(236, 33%, 92%);
+   background-size: 100% 300px;
 }
 
 header{
@@ -57,7 +56,7 @@ header > h1{
 }
 
 .divList ul {
-   border: 1px solid rgb(181, 181, 181);
+   border: 1px solid hsl(235, 19%, 35%);
    border-radius: 6px 6px 0 0;
    width: 200px;
 }
@@ -110,6 +109,7 @@ header > h1{
    background-color: white;
    border: 2px solid rgb(181, 181, 181);
    height: 14px;
+   border-radius: 13px;
 }
 
 
@@ -136,7 +136,7 @@ header > h1{
    cursor: pointer;
 }
 
-#limpaCheck:hover{
+.list-final #limpaCheck:hover,#todos:hover,#ativos:hover,#completados:hover{
    color: hsl(235, 19%, 35%);
 }
 
@@ -176,8 +176,47 @@ header > h1{
 
 .dark-list{
    background-color: hsl(235, 24%, 19%);
+   border: 1px solid hsl(235, 19%, 35%);
 }
 
-.dark-list > p:hover{
+.dark-list > p{
+   color: rgb(168, 168, 168);
+}
+
+.dark-list > #limpaCheck:hover,.dark-list >#todos:hover,.dark-list >#ativos:hover,.dark-list >#completados:hover{
    color: white;
+}
+
+@media (min-width: 1024px){
+
+   #novoItem,#lista,.list-final{
+      width: 500px;
+   }
+   
+   .select-status{
+      margin-top: -31px;
+   }
+
+   #del{
+      width: 4%;
+   }
+
+   .list-final{
+      justify-content: space-between;
+      height: 32px;
+   }
+
+   .list-final > p {
+      font-size: 16px;
+   }
+
+   .select-status{
+      justify-content: space-between;
+      border: 0;
+   }
+
+   .select-status > p{
+      font-size: 15px;
+   }
+
 }
