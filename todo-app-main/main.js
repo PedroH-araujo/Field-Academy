@@ -54,22 +54,31 @@ function criaItemLista(conteudo) {
 //Remover da Lista
 let lista = []
 let removeBtn = []
+let listCheck = []
 
 function removeItem(e, indice) {
    removeBtn[indice].addEventListener("click", () => {
       lista[indice].parentElement.removeChild(lista[indice])
+      console.log(indice, e)
       contagemDeItens()
    })
 }
+
+//Atualizar Lista
+
+function atualizaLista(){
+   let item = document.querySelectorAll(".item")
+   listCheck = Array.from(item)
+}
+
 
 //Quantidade de itens faltando
 
 const qntItens = document.querySelector("#iLeft")
 
-function contagemDeItens(num) {
+function contagemDeItens() {
    let item = document.querySelectorAll(".item").length
    let checkedElements = document.getElementsByClassName("check").length
-   const lista = document.querySelector("#lista").childElementCount
    qntItens.innerHTML = `${item - checkedElements} itens left`
 }
 
@@ -89,3 +98,20 @@ function checkItem(e, indice) {
    })
 }
 
+//Limpar os itens completos
+const clear = document.querySelector("#limpaCheck")
+
+clear.addEventListener("click", () => {
+   let checkedElements = document.getElementsByClassName("check")
+   Array.from(checkedElements).forEach(e => listCheck.push(e))
+   Array.from(checkedElements).forEach(e => e.parentElement.removeChild(e))
+})
+
+//Status dos itens
+const all = document.querySelector("#todos")
+const ativos = document.querySelector("#ativos")
+const completados = document.querySelector("#completados")
+
+all.addEventListener("click", () => {
+   listCheck.forEach(e => listaItens.appendChild(e))
+})

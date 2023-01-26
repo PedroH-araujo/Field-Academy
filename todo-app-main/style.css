@@ -110,6 +110,10 @@ header > h1{
    cursor: pointer;
 }
 
+#iLeft:hover, #limpaCheck:hover{
+   color: hsl(235, 19%, 35%);
+}
+
 .select-status{
    display: flex;
    flex-direction: row;
@@ -124,6 +128,11 @@ header > h1{
    font-size: 12px;
    height: 30px;
    line-height: 30px;
+   cursor: pointer;
+}
+
+.active{
+   color: hsl(192, 100%, 67%);
 }
 
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DARK MODE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
