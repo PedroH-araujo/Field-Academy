@@ -71,6 +71,19 @@ header > h1{
    align-items: center;
 }
 
+.item > p,img {
+   cursor: pointer;
+}
+
+#novoItem:focus{
+   border: none;
+   outline: 0;
+}
+
+.item p, #novoItem{
+   color: rgb(112, 111, 111);;
+}
+
 .divList li:last-child{
    border: 0;
 }
@@ -80,14 +93,25 @@ header > h1{
 }
 
 
-.divList img{
+#del{
    width: 8%;
 } 
 
-#checkbox:checked + p{
+#check + p{
    text-decoration: line-through;
    color: rgb(158, 159, 159);
 }
+
+#check{
+   background-image: linear-gradient(90deg, hsl(192, 100%, 67% ), hsl(280, 87%, 65%))
+}
+
+.checkbox {
+   background-color: white;
+   border: 2px solid rgb(181, 181, 181);
+   height: 14px;
+}
+
 
 .list-final{
    display: flex;
@@ -108,11 +132,11 @@ header > h1{
 
 
 
-#iLeft, #limpaCheck{
+#limpaCheck{
    cursor: pointer;
 }
 
-#iLeft:hover, #limpaCheck:hover{
+#limpaCheck:hover{
    color: hsl(235, 19%, 35%);
 }
 
@@ -131,10 +155,15 @@ header > h1{
    height: 30px;
    line-height: 30px;
    cursor: pointer;
+   color: rgb(181, 181, 181);
 }
 
-.active{
-   color: hsl(192, 100%, 67%);
+.select-status > p:hover{
+   color: hsl(235, 19%, 35%);
+}
+
+.select-status > .active{
+   color: hsl(192, 55%, 46%);
 }
 
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DARK MODE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
@@ -147,5 +176,8 @@ header > h1{
 
 .dark-list{
    background-color: hsl(235, 24%, 19%);
-   color: rgb(255, 255, 255);
+}
+
+.dark-list > p:hover{
+   color: white;
 }

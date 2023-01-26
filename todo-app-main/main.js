@@ -31,10 +31,9 @@ novoItem.addEventListener("keydown", function (event) {
       criaItemLista(novoItem.value)
       let itens = document.querySelector("#lista")
       lista.push(itens.lastElementChild)
-
-      checkboxList.push(itens.lastElementChild.firstElementChild)
+      // checkboxList.push(itens.lastElementChild.firstElementChild)
       novoItem.value = ''
-      checkboxList.forEach(checkItem)
+      // checkboxList.forEach(checkItem)
       contagemDeItens()
    }
 })
@@ -46,8 +45,12 @@ function criaItemLista(conteudo) {
    item.classList.add("item")
    item.classList.add("no-check")
    item.innerHTML = `
-   <input type="checkbox" id="checkbox"> <p>${conteudo}</p> <img src="images/icon-cross.svg" id="del" onclick="deletaElemento(this.parentNode)">
+
+   <img src="images/icon-check.svg " class="checkbox" onclick="checkElemento(this, this.parentNode)"> <p>${conteudo}</p> <img src="images/icon-cross.svg" id="del" onclick="deletaElemento(this.parentNode)">
+
+
    `
+   // <input type="checkbox" id="checkbox" onchange="checkElemento(event,this.parentNode)"> <p>${conteudo}</p> <img src="images/icon-cross.svg" id="del" onclick="deletaElemento(this.parentNode)">
    listaItens.appendChild(item)
 }
 
@@ -56,13 +59,6 @@ let lista = []
 let listCheck = []
 let listUnCheck = []
 
-/*function removeItem(e, indice) {
-   removeBtn[indice].addEventListener("click", () => {
-      lista[indice].parentElement.removeChild(lista[indice])
-      lista.splice(indice,1)
-      contagemDeItens()
-   })
-}*/
 
   function deletaElemento(elemento) {
    elemento.remove()
@@ -70,13 +66,6 @@ let listUnCheck = []
    lista.splice(x,1)
    contagemDeItens()
   }
-
-
-function del(){
-   const btnDel = document.querySelectorAll("#del")
-   const item = document.querySelectorAll(".item")
-   console.log(btnDel,item)
-}
 
 
 //Atualizar Lista
@@ -100,20 +89,72 @@ function contagemDeItens() {
 //Dar CHECK nos itens
 let checkboxList = []
 
-function checkItem(e, indice) {
-   checkboxList[indice].addEventListener("change", () => {
-      if(checkboxList[indice].checked) {
-         // Checkbox está selecionado.
-         lista[indice].classList.add("check")
-         lista[indice].classList.remove("no-check")
-      } else {
-        lista[indice].classList.remove("check")
-        lista[indice].classList.add("no-check")
-         // Checkbox não está selecionado.
-     }
-      contagemDeItens()
-   })
+// function checkItem(e, indice) {
+//    checkboxList[indice].addEventListener("change", () => {
+//       if(checkboxList[indice].checked) {
+//          // Checkbox está selecionado.
+//          lista[indice].classList.add("check")
+//          lista[indice].classList.remove("no-check")
+//          console.log(lista[indice])
+//       } else {
+//         lista[indice].classList.remove("check")
+//         lista[indice].classList.add("no-check")
+//         console.log(lista[indice])
+//          // Checkbox não está selecionado.
+//      }
+//       contagemDeItens()
+//    })
+// }
+
+function checkElemento(filho, pai) {
+   if(!filho.classList.contains("checado")){
+   filho.setAttribute('id','check')
+   pai.classList.add("check")
+   pai.classList.remove("no-check")
+   filho.classList.add("checado")
+   console.log("chek")
+   }
+   else {
+   filho.removeAttribute('id','check')
+   pai.classList.add("no-check")
+   pai.classList.remove("check")
+   filho.classList.remove("checado")
+   console.log("no-chek")
+   }
+   contagemDeItens()
 }
+
+
+// filho.setAttribute('id','check')
+// pai.classList.add("check")
+
+
+// function checkElemento(event, pai) {
+//    if (event.currentTarget.checked) {
+//       pai.classList.add("check")
+//       pai.classList.remove("no-check")
+//    } else {
+//       pai.classList.remove("check")
+//       pai.classList.add("no-check")
+//    }
+//    contagemDeItens()
+//  }
+
+// function checkElemento(elemento){
+//    if(this.target) {
+//       // Checkbox está selecionado.
+//       // lista[indice].classList.add("check")
+//       // lista[indice].classList.remove("no-check")
+//       // console.log(lista[indice])
+//       console.log("check")
+//    } else {
+//    //   lista[indice].classList.remove("check")
+//    //   lista[indice].classList.add("no-check")
+//    //   console.log(lista[indice])
+//       // Checkbox não está selecionado.
+//       console.log("uncheck")
+//   }
+// }
 
 //Limpar os itens completos
 const clear = document.querySelector("#limpaCheck")
@@ -148,23 +189,26 @@ function pegaItens(){
 
 all.addEventListener("click", () => {
    lista.forEach(e => listaItens.appendChild(e))
+   all.classList.add("active")
+   ativos.classList.remove("active")
+   completados.classList.remove("active")
 })
 
 ativos.addEventListener("click", function noCheck() {
    pegaItens()
-   /*let item = document.querySelectorAll(".item")
-   Array.from(item).forEach(e => listCheck.push(e))
-   let noCheck = Array.from(item).filter(e => e.classList.contains("no-check"))*/
    listaItens.innerHTML = ""
    listUnCheck.forEach(e => listaItens.appendChild(e))
+   ativos.classList.add("active")
+   completados.classList.remove("active")
+   all.classList.remove("active")
 })
 
 completados.addEventListener("click", function complet() {
    pegaItens()
-   /*let item = document.querySelectorAll(".item")
-   Array.from(item).forEach(e => listCheck.push(e))
-   check = Array.from(item).filter(e => e.classList.contains("check"))
-   console.log(check)*/
    listaItens.innerHTML = ""
    listCheck.forEach(e => listaItens.appendChild(e))
+   completados.classList.add("active")
+   ativos.classList.remove("active")
+   all.classList.remove("active")
 })
+
