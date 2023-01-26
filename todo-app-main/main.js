@@ -66,14 +66,6 @@ let listUnCheck = []
   }
 
 
-//Atualizar Lista
-
-function atualizaLista(){
-   let item = document.querySelectorAll(".item")
-   listCheck = Array.from(item)
-}
-
-
 //Quantidade de itens faltando
 
 const qntItens = document.querySelector("#iLeft")
@@ -157,4 +149,3 @@ completados.addEventListener("click", function complet() {
    ativos.classList.remove("active")
    all.classList.remove("active")
 })
-
