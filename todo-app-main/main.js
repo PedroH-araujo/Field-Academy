@@ -31,13 +31,11 @@ novoItem.addEventListener("keydown", function (event) {
       criaItemLista(novoItem.value)
       let itens = document.querySelector("#lista")
       lista.push(itens.lastElementChild)
-      removeBtn.push(itens.lastElementChild.lastElementChild)
+
       checkboxList.push(itens.lastElementChild.firstElementChild)
       novoItem.value = ''
-      removeBtn.forEach(removeItem)
       checkboxList.forEach(checkItem)
       contagemDeItens()
-      del()
    }
 })
 let itens = document.querySelector("#lista")
@@ -48,24 +46,31 @@ function criaItemLista(conteudo) {
    item.classList.add("item")
    item.classList.add("no-check")
    item.innerHTML = `
-   <input type="checkbox" id="checkbox"> <p>${conteudo}</p> <img src="images/icon-cross.svg" id="del" >
+   <input type="checkbox" id="checkbox"> <p>${conteudo}</p> <img src="images/icon-cross.svg" id="del" onclick="deletaElemento(this.parentNode)">
    `
    listaItens.appendChild(item)
 }
 
 //Remover da Lista
 let lista = []
-let removeBtn = []
 let listCheck = []
 let listUnCheck = []
 
-function removeItem(e, indice) {
+/*function removeItem(e, indice) {
    removeBtn[indice].addEventListener("click", () => {
       lista[indice].parentElement.removeChild(lista[indice])
-      console.log(indice, e)
+      lista.splice(indice,1)
       contagemDeItens()
    })
-}
+}*/
+
+  function deletaElemento(elemento) {
+   elemento.remove()
+   let x = (lista.indexOf(elemento))
+   lista.splice(x,1)
+   contagemDeItens()
+  }
+
 
 function del(){
    const btnDel = document.querySelectorAll("#del")
@@ -123,29 +128,43 @@ clear.addEventListener("click", function check() {
 const all = document.querySelector("#todos")
 const ativos = document.querySelector("#ativos")
 const completados = document.querySelector("#completados")
+const tau = document.querySelector(".select-status")
+
+//tau.addEventListener("click")
+
+
+listaItens.addEventListener("click", () => {
+   let item = document.querySelectorAll(".item")
+
+})
 
 function pegaItens(){
-   const item = document.querySelectorAll(".item")
-
-   Array.from(item).forEach(e => listUnCheck.push(e))
-   Array.from(item).forEach(e => listCheck.push(e))
+   listCheck = lista.filter(e => e.classList.contains("check"))
+   listUnCheck = lista.filter(e => e.classList.contains("no-check"))
+   console.log(listCheck,listUnCheck)
+   //Array.from(item).forEach(e => listUnCheck.push(e))
+   //Array.from(item).forEach(e => listCheck.push(e))
 }
 
 all.addEventListener("click", () => {
-   listCheck.forEach(e => listaItens.appendChild(e))
-   listUnCheck.forEach(e => listaItens.appendChild(e))
+   lista.forEach(e => listaItens.appendChild(e))
 })
 
 ativos.addEventListener("click", function noCheck() {
    pegaItens()
-   let noCheck = listUnCheck.filter(e => e.classList.contains("no-check"))
+   /*let item = document.querySelectorAll(".item")
+   Array.from(item).forEach(e => listCheck.push(e))
+   let noCheck = Array.from(item).filter(e => e.classList.contains("no-check"))*/
    listaItens.innerHTML = ""
-   noCheck.forEach(e => listaItens.appendChild(e))
+   listUnCheck.forEach(e => listaItens.appendChild(e))
 })
 
 completados.addEventListener("click", function complet() {
    pegaItens()
-   let check = listCheck.filter(e => e.classList.contains("check"))
+   /*let item = document.querySelectorAll(".item")
+   Array.from(item).forEach(e => listCheck.push(e))
+   check = Array.from(item).filter(e => e.classList.contains("check"))
+   console.log(check)*/
    listaItens.innerHTML = ""
-   check.forEach(e => listaItens.appendChild(e))
+   listCheck.forEach(e => listaItens.appendChild(e))
 })
