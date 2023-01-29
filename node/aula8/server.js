@@ -9,7 +9,6 @@ mongoose.set('strictQuery', true)
 mongoose.connect(process.env.CONNECTIONSTRING)
    .then(() => {
       app.emit('pronto')
-      console.log('conexão feita')
    })
    .catch(e => console.log(e))
 
