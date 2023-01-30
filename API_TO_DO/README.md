@@ -13,7 +13,7 @@ O objetivo deste desafio era criar um todo list com as seguintes funcionalidades
 
 ## Descrição do projeto
 Após finalizar este desafio, eu iniciei meus estudo em NodeJS, e queria testar meus conhecimentos com algo prático.
-Então eu usei a todo list, adicionei a funcionalidade de atualizar algum item da lista e criei um back end utilizando NodeJS.
+Então eu usei a todo list, adicionei a funcionalidade de atualizar o item da lista e criei um back end utilizando NodeJS.
 
 ## Como utilizar
 Para utilizar esta aplicação recomendo ter o VScode instalado <img align="center" alt="vscode" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg">
