@@ -53,7 +53,7 @@ function criaItemLista(conteudo,id) {
       item.classList.add("dark-list")
    }
    item.innerHTML = `
-   <img src="images/icon-check.svg " class="checkbox" onclick="checkElemento(this, this.parentNode)"> <p>${conteudo}</p> <img src="images/icon-cross.svg" id="del" onclick="deletaElemento(this.parentNode)">
+   <img src="images/icon-check.svg " class="checkbox" onclick="checkElemento(this, this.parentNode)"> <img src="images/updating.png" class="update" onclick="updateElement(this.parentNode)"> <p>${conteudo}</p> <img src="images/icon-cross.svg" id="del" onclick="deletaElemento(this.parentNode)">
    `
    listaItens.appendChild(item)
 }
@@ -157,4 +157,6 @@ let att = document.querySelector('.update')
 
 function updateElement(element){
    element.querySelector('p').innerHTML = novoItem.value
+   Array.from(list).splice(Array.from(list).indexOf(element), 1, element)
+   update(Array.from(list).indexOf(element), novoItem.value)
 }

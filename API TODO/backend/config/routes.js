@@ -35,14 +35,14 @@ routes.put('/:id/:name', (req, res) => {
    let newArq = arquivo.filter(element => {
       if((element.id == id)){
       element.nome = name
+      console.log(element)
       return element
       }
    })
    
-   arquivo.splice(0,1,newArq)
-   
-   return res.send(`Item de indice ${id} foi atualizado`)
-   
+   arquivo.splice(id,1,newArq[0])
+
+   return res.json(arquivo)
 })
 
 

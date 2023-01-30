@@ -39,3 +39,11 @@ async function delet(id){
 const conexaoConvertida = await conexao.json()
 console.log(conexaoConvertida)
 }
+
+async function update(id,nome){
+   const conexao = await fetch(`http://localhost:3000/${id}/${nome}`, {
+      method: 'PUT',
+})
+const conexaoConvertida = await conexao.json()
+console.log(id,nome)
+}
