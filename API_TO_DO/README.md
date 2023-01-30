@@ -38,7 +38,7 @@ npm start
 ```
 Pronto, agora todos os pacotes foram instalados e o servidor ja esta rodando.
 
-Agora acesse [Este Link](https://pedroh-araujo.github.io/Field-Academy/API_TO_DO/todo-app-main/) e use a TODO LIST
+Agora acesse [Link](https://pedroh-araujo.github.io/Field-Academy/API_TO_DO/todo-app-main/) e use a TODO LIST
 
 Para encerrar o servidor basta clicar no terminal e pressionar Ctrl + C
 
