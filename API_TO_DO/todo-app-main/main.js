@@ -137,7 +137,6 @@ function pegaItens(){
 
    listCheck = list.filter(e => e.classList.contains("check"))
    listUnCheck = list.filter(e => e.classList.contains("no-check"))
-   console.log(listCheck,listUnCheck)
 
 }
 

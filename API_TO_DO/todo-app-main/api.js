@@ -8,7 +8,7 @@ async function requisicao() {
    });
    lista = reqConvert
    list = Array.from(document.querySelectorAll('[data-id]'))
-   console.log(reqConvert)
+
    return reqConvert
 }
 
@@ -31,7 +31,7 @@ let lastItem = conexaoConvertida[conexaoConvertida.length - 1]
 criaItemLista(lastItem.nome,lastItem.id,lastItem.status)
 
 list = Array.from(document.querySelectorAll('[data-id]'))
-console.log(conexaoConvertida)
+
 }
 
 
@@ -60,5 +60,5 @@ async function checkItemApi(id,n) {
       method: 'PUT',
  })
  const conexaoConvertida = await conexao.json()
- console.log(conexaoConvertida)
+
 }
