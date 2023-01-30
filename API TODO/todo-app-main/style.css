@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+:root{
+   --color-primary:hsl(220, 98%, 61%);
+}
+
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Josefin Sans', sans-serif;
+   font-size: 18px;
+}
+
+body{
+   background-image: url(images/bg-mobile-light.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-color: hsl(236, 33%, 92%);
+   background-size: 100% 300px;
+}
+
+header{
+   padding-top: 50px;
+   display: flex;
+   justify-content: space-around;
+}
+
+header > h1{
+   color: hsl(0, 0%, 98%);
+   font-weight: 700;
+   font-size: 30px;
+   letter-spacing: 15px;
+}
+
+.sun{
+   display: none;
+   cursor: pointer;
+}
+
+.moon{
+   cursor: pointer;
+}
+
+.divList {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.divList > input {
+   margin: 20px 0;
+   padding: 10px;
+   border-radius: 5px;
+   border: none;
+}
+
+.divList ul {
+   border: 1px solid hsl(235, 19%, 35%);
+   border-radius: 6px 6px 0 0;
+   width: 200px;
+}
+
+.list-item{
+   display: flex;
+   border-bottom: 1px solid rgb(181, 181, 181);
+   background-color: white;
+   height: 30px;
+   justify-content: space-around;
+   align-items: center;
+}
+
+.item > p,img {
+   cursor: pointer;
+}
+
+#novoItem:focus{
+   border: none;
+   outline: 0;
+}
+
+.item p, #novoItem{
+   color: rgb(112, 111, 111);;
+}
+
+.divList li:last-child{
+   border: 0;
+}
+
+.divList li:first-child{
+   border-radius: 5px 5px 0 0;
+}
+
+
+#del{
+   width: 8%;
+} 
+
+#check + p{
+   text-decoration: line-through;
+   color: rgb(158, 159, 159);
+}
+
+#check{
+   background-image: linear-gradient(90deg, hsl(192, 100%, 67% ), hsl(280, 87%, 65%))
+}
+
+.checkbox {
+   background-color: white;
+   border: 2px solid rgb(181, 181, 181);
+   height: 14px;
+   border-radius: 13px;
+}
+
+
+.list-final{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   color: rgb(181, 181, 181);
+   background-color: white;
+   height: 30px;
+   width: 200px;
+   border-radius: 1px 1px 5px 5px;
+   align-items: center;
+   border: 0
+}
+
+.list-final > p{
+   font-size: 10px;
+}
+
+
+
+#limpaCheck{
+   cursor: pointer;
+}
+
+.list-final #limpaCheck:hover,#todos:hover,#ativos:hover,#completados:hover{
+   color: hsl(235, 19%, 35%);
+}
+
+.select-status{
+   display: flex;
+   flex-direction: row;
+   background-color: white;
+   border-radius: 10px;
+   margin-top: 10px;
+   width: 163px;
+   justify-content: space-evenly;
+}
+
+.select-status > p{
+   font-size: 12px;
+   height: 30px;
+   line-height: 30px;
+   cursor: pointer;
+   color: rgb(181, 181, 181);
+}
+
+.select-status > p:hover{
+   color: hsl(235, 19%, 35%);
+}
+
+.select-status > .active{
+   color: hsl(192, 55%, 46%);
+}
+
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DARK MODE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+
+
+.dark{
+   background-image: url(images/bg-mobile-dark.jpg);
+   background-color: hsl(235, 21%, 11%);
+}
+
+.dark-list{
+   background-color: hsl(235, 24%, 19%);
+   border: 1px solid hsl(235, 19%, 35%);
+}
+
+.dark-list > p{
+   color: rgb(168, 168, 168);
+}
+
+.dark-list > #limpaCheck:hover,.dark-list >#todos:hover,.dark-list >#ativos:hover,.dark-list >#completados:hover{
+   color: white;
+}
+
+@media (min-width: 1024px){
+
+   #novoItem,#lista,.list-final{
+      width: 500px;
+   }
+   
+   .select-status{
+      margin-top: -31px;
+   }
+
+   #del{
+      width: 4%;
+   }
+
+   .list-final{
+      justify-content: space-between;
+      height: 32px;
+   }
+
+   .list-final > p {
+      font-size: 16px;
+   }
+
+   .select-status{
+      justify-content: space-between;
+      border: 0;
+   }
+
+   .select-status > p{
+      font-size: 15px;
+   }
+
+}
