@@ -151,6 +151,10 @@ completados.addEventListener("click", function complet() {
    all.classList.remove("active")
 })
 
-//api
+//atualizar item
 
+let att = document.querySelector('.update')
 
+function updateElement(element){
+   element.querySelector('p').innerHTML = novoItem.value
+}
