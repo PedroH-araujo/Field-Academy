@@ -12,7 +12,7 @@ routes.post('/add', (req, res) => {
    
    arquivo.push(body)
    console.log(req.body)
-   return res.status(201).json(body)
+   return res.status(201).json(arquivo)
 })
 
 routes.delete('/:id', (req, res) => {
@@ -45,5 +45,28 @@ routes.put('/:id/:name', (req, res) => {
    return res.json(arquivo)
 })
 
+
+routes.put('/check/:id/:n', (req, res) => {
+   const id = req.params.id
+   const nCheck = req.params.n
+
+   let newArq = arquivo.filter(element => {
+      if((element.id == id)){
+         if(nCheck == 1){
+            element.status = "check"
+         } else {
+            element.status = "no-check"
+
+         }
+
+         console.log(element)
+         return element
+      }
+   })
+   
+   arquivo.splice(id,1,newArq[0])
+
+   return res.json(arquivo)
+})
 
 module.exports = routes

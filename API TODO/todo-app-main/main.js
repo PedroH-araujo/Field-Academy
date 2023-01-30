@@ -28,12 +28,12 @@ const listaItens = document.querySelector("#lista")
 
 novoItem.addEventListener("keydown", function (event) {
    if (event.keyCode === 13) {
-      criaItemLista(novoItem.value)
       let itens = document.querySelector("#lista")
       lista.push(itens.lastElementChild)
       let nums = {
          id: lista.length - 1,
-         nome: novoItem.value
+         nome: novoItem.value,
+         status: "no-check"
       }
       create(nums)
       novoItem.value = ''
@@ -42,20 +42,29 @@ novoItem.addEventListener("keydown", function (event) {
 })
 let itens = document.querySelector("#lista")
 
-function criaItemLista(conteudo,id) {
+function criaItemLista(conteudo,id,status) {
    const detectaDark = document.body.classList.contains("dark")
    let item = document.createElement("li")
    item.classList.add("list-item")
    item.classList.add("item")
-   item.classList.add("no-check")
+   if(status == "check"){
+      item.classList.add("check")
+      item.innerHTML = `
+      <img src="images/icon-check.svg " class="checkbox checado" onclick="checkElemento(this, this.parentNode)" id="check"> <img src="images/updating.png" class="update" onclick="updateElement(this.parentNode)"> <p>${conteudo}</p> <img src="images/icon-cross.svg" id="del" onclick="deletaElemento(this.parentNode)">
+      </li>
+      `
+   }else {
+      item.classList.add("no-check")
+      item.innerHTML = `
+      <img src="images/icon-check.svg " class="checkbox" onclick="checkElemento(this, this.parentNode)"> <img src="images/updating.png" class="update" onclick="updateElement(this.parentNode)"> <p>${conteudo}</p> <img src="images/icon-cross.svg" id="del" onclick="deletaElemento(this.parentNode)">
+      `
+   }
    item.setAttribute('data-id', id)
    if(detectaDark){
       item.classList.add("dark-list")
    }
-   item.innerHTML = `
-   <img src="images/icon-check.svg " class="checkbox" onclick="checkElemento(this, this.parentNode)"> <img src="images/updating.png" class="update" onclick="updateElement(this.parentNode)"> <p>${conteudo}</p> <img src="images/icon-cross.svg" id="del" onclick="deletaElemento(this.parentNode)">
-   `
    listaItens.appendChild(item)
+   contagemDeItens()
 }
 
 //Remover da Lista
@@ -67,6 +76,8 @@ let listUnCheck = []
   function deletaElemento(elemento) {
    elemento.remove()
    delet(elemento.getAttribute("data-id"))
+   let i = list.indexOf(elemento)
+   list.splice(i,1)
    contagemDeItens()
   }
 
@@ -91,14 +102,16 @@ function checkElemento(filho, pai) {
    pai.classList.add("check")
    pai.classList.remove("no-check")
    filho.classList.add("checado")
-   console.log("chek")
+   checkItemApi(pai.getAttribute("data-id"),1)
+
    }
    else {
    filho.removeAttribute('id','check')
    pai.classList.add("no-check")
    pai.classList.remove("check")
    filho.classList.remove("checado")
-   console.log("no-chek")
+   checkItemApi(pai.getAttribute("data-id"),0)
+
    }
    contagemDeItens()
 }
@@ -110,6 +123,9 @@ clear.addEventListener("click", function check() {
    let checkedElements = document.getElementsByClassName("check")
    Array.from(checkedElements).forEach(e => listCheck.push(e))
    Array.from(checkedElements).forEach(e => e.parentElement.removeChild(e))
+   ativos.classList.add("active")
+   completados.classList.remove("active")
+   all.classList.remove("active")
 })
 
 //Status dos itens
@@ -118,16 +134,16 @@ const ativos = document.querySelector("#ativos")
 const completados = document.querySelector("#completados")
 
 function pegaItens(){
-   lista = Array.from(document.querySelectorAll('[data-id]'))
-   listCheck = lista.filter(e => e.classList.contains("check"))
-   listUnCheck = lista.filter(e => e.classList.contains("no-check"))
+
+   listCheck = list.filter(e => e.classList.contains("check"))
+   listUnCheck = list.filter(e => e.classList.contains("no-check"))
    console.log(listCheck,listUnCheck)
 
 }
 
 all.addEventListener("click", () => {
    pegaItens()
-   Array.from(list).forEach(e => listaItens.appendChild(e))
+   list.forEach(e => listaItens.appendChild(e))
    all.classList.add("active")
    ativos.classList.remove("active")
    completados.classList.remove("active")
@@ -159,4 +175,5 @@ function updateElement(element){
    element.querySelector('p').innerHTML = novoItem.value
    Array.from(list).splice(Array.from(list).indexOf(element), 1, element)
    update(Array.from(list).indexOf(element), novoItem.value)
+   novoItem.value = ""
 }
