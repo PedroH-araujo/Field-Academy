@@ -1,0 +1,26 @@
+{  
+   "author": 
+   [
+      { "id": 1,
+      "nome": "RICK-ESCRITOR",
+      "book": ""
+   },
+   { "id": 2,
+      "nome": "MORTY-UM-CARA",
+      "book ": ""
+   }
+
+   ],
+   "books":
+   [
+      { "id": 1,
+      "nome": "harry-livro",
+      "author": ""
+   },
+   { "id": 2,
+      "nome": "POTER-livro",
+      "author": ""
+   }
+
+   ]
+}

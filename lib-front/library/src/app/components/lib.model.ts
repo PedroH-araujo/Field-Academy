@@ -1,11 +1,11 @@
 export interface Book {
-  id: '',
-  nome: '',
-  author?: ''
+  id: number,
+  nome: string,
+  author?: string
 }
 
 export interface Author {
-  id: '',
-  nome: '',
-  book?: ''
+  id: number,
+  nome: string,
+  book?: string
 }

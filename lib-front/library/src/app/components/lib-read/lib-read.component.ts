@@ -10,15 +10,17 @@ import { Book } from '../lib.model'
 })
 export class LibReadComponent {
 
-  book: Book[] = [];
+  books: Book[] = [];
+  displayedColumns: string[] = ['id', 'nome', 'author'];
 
   constructor(private libService:LibService){}
 
   ngOnInit(): void {
     this.libService.readBook().subscribe(books => {
-      this.book = books
+      this.books = books
       console.log(books)
     })
 
   }
+
 }
