@@ -6,7 +6,7 @@ let autor = arquivo.author
 
 routes.get('/books', (req, res) => {
 
-   return res.json(arquivo)
+   return res.json(arquivo.books)
 })
 
 
@@ -50,7 +50,7 @@ routes.put('/book/:id/:name', (req, res) => {
 // AUTHOR ROUTES
 
 routes.get('/authors', (req, res) => {
-   return res.json(arquivo)
+   return res.json(arquivo.author)
 })
 
 routes.post('/author', (req, res) => {
@@ -92,9 +92,11 @@ routes.put('/author/:id/:name', (req, res) => {
 
 // Author-Book Routes
 
-routes.post('/author-book/:id1/:id2', (req, res) => {
-   const idAuth = req.params.id1
-   const idBook = req.params.id2
+routes.post('/author-book', (req, res) => {
+   const body = req.body
+   
+   const idAuth = body.idAuthor
+   const idBook = body.idBook
 
    let author = autor.filter(element => {
       if((element.id == idAuth)){
@@ -107,24 +109,50 @@ routes.post('/author-book/:id1/:id2', (req, res) => {
       }
    })
    
-   book[0].author = author[0].nome
+      if(book[0].author == ''){
+         book[0].author += author[0].nome
+      } else { 
+         book[0].author += `,${author[0].nome}`
+      }
 
+      if(author[0].book == ''){
+         author[0].book += book[0].nome
+      } else {
+         author[0].book += `,${book[0].nome}`
+      }
 
    return res.json(arquivo)
 })
 
-routes.delete('/author-book/:id', (req, res) => {
-   const id = req.params.id
-
-   let newArq = books.filter(element => {
-      if((element.id == id)){
-      element.author = ''
-      return element
+routes.delete('/author-book', (req, res) => {
+   const body = req.body
+   
+   const idAuth = body.idAuthor
+   const idBook = body.idBook
+  
+   let author = arquivo.author.filter(element => {
+      if((element.id == idAuth)){
+      return element.nome
+      }
+   })
+   let book = arquivo.books.filter(element => {
+      if((element.id == idBook)){
+      return element.nome
       }
    })
    
-   books.splice(id - 1,1,newArq[0])
-
+   const bookArray = author[0].book.split(",");
+   const iBook = bookArray.indexOf(book[0].nome)
+  bookArray.splice(iBook,1)
+   
+   const authorArray = book[0].author.split(",")
+   const iAuthor = authorArray.indexOf(author[0].nome)
+  
+  authorArray.splice(iAuthor,1)
+    
+   book[0].author = authorArray.toString()
+   author[0].book = bookArray.toString()
+  
    return res.json(arquivo)
 })
 
