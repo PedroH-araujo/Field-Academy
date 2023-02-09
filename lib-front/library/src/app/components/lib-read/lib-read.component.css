@@ -1,4 +1,22 @@
+table{
+  width: 550px;
+}
+
 ul{
   color: white;
   font-size: 40px;
+}
+
+.btn{
+  width: 20px;
+}
+
+
+button{
+  width: 50%;
+  height: 30%;
+}
+
+button:first-child{
+  margin-right: 10px;
 }

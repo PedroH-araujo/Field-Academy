@@ -11,7 +11,7 @@ import { Book } from '../lib.model'
 export class LibReadComponent {
 
   books: Book[] = [];
-  displayedColumns: string[] = ['id', 'nome', 'author'];
+  displayedColumns: string[] = ['id', 'nome', 'author', 'action'];
 
   constructor(private libService:LibService){}
 
@@ -20,7 +20,8 @@ export class LibReadComponent {
       this.books = books
       console.log(books)
     })
-
   }
+
+
 
 }

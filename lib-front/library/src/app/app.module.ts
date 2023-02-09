@@ -13,6 +13,7 @@ import { CreateComponent } from './components/create-authors/create.component'
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { CreateBooksComponent } from './components/create-books/create-books.component'
+import {MatIconModule} from '@angular/material/icon';
 
 
 
@@ -32,7 +33,8 @@ import { CreateBooksComponent } from './components/create-books/create-books.com
     HttpClientModule,
     MatButtonModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

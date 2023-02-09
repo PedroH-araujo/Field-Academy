@@ -1,6 +1,8 @@
+import { LibReadComponent } from './../lib-read/lib-read.component';
 import { Component } from '@angular/core';
 import { Book } from '../lib.model';
 import { LibService } from '../lib.service';
+
 
 @Component({
   selector: 'app-create-books',
