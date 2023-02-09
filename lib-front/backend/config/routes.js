@@ -14,7 +14,7 @@ routes.post('/book', (req, res) => {
    let body = req.body
    
    books.push(body)
-   books[0].total += 1
+
    return res.status(201).json(arquivo)
 })
 
@@ -27,7 +27,7 @@ routes.delete('/book/:id', (req, res) => {
    })
    
    arquivo.books = newArq
-   books[0].total -= 1
+
    return res.send(newArq)
 })
 
@@ -57,7 +57,7 @@ routes.post('/author', (req, res) => {
    let body = req.body
    
    autor.push(body)
-   autor[0].total += 1
+
    return res.status(201).json(arquivo)
 })
 
@@ -70,7 +70,7 @@ routes.delete('/author/:id', (req, res) => {
    })
    
    arquivo.author = newArq
-   autor[0].total -= 1
+
    return res.send(newArq)
 })
 

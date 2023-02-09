@@ -15,4 +15,8 @@ export class AuthorService {
   readAuthor(): Observable<Author[]>{
     return this.http.get<Author[]>(this.baseUrl)
   }
+
+  createAuthor(author: Author){
+    return this.http.post('http://localhost:3000/author',author)
+  }
 }
