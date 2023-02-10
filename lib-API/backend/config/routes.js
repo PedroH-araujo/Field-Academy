@@ -111,14 +111,18 @@ routes.post('/author-book', (req, res) => {
    
       if(book[0].author == ''){
          book[0].author += author[0].nome
+         book[0].idAuthor += author[0].id
       } else { 
          book[0].author += `,${author[0].nome}`
+         book[0].idAuthor += `,${author[0].id}`
       }
 
       if(author[0].book == ''){
          author[0].book += book[0].nome
+         author[0].idBook += book[0].id
       } else {
          author[0].book += `,${book[0].nome}`
+         author[0].idBook += `,${book[0].id}`
       }
 
    return res.json(arquivo)
@@ -128,7 +132,7 @@ routes.delete('/author-book', (req, res) => {
    const body = req.body
    
    const idAuth = body.idAuthor
-   const idBook = body.idBook
+   const idBookx = body.idBook
   
    let author = arquivo.author.filter(element => {
       if((element.id == idAuth)){
@@ -136,22 +140,31 @@ routes.delete('/author-book', (req, res) => {
       }
    })
    let book = arquivo.books.filter(element => {
-      if((element.id == idBook)){
+      if((element.id == idBookx)){
       return element.nome
       }
    })
    
+   const idBookArray = author[0].idBook.split(",")
+   const idBooks = idBookArray.indexOf(book[0].id)
+  idBookArray.splice(idBooks,1)
+
    const bookArray = author[0].book.split(",");
    const iBook = bookArray.indexOf(book[0].nome)
   bookArray.splice(iBook,1)
    
+   const idAuthorArray = book[0].idAuthor.split(",")
+   const idAuthors = idAuthorArray.indexOf(author[0].id)
+  idAuthorArray.splice(idAuthors,1) 
+
    const authorArray = book[0].author.split(",")
    const iAuthor = authorArray.indexOf(author[0].nome)
-  
   authorArray.splice(iAuthor,1)
     
-   book[0].author = authorArray.toString()
-   author[0].book = bookArray.toString()
+  author[0].idBook = idBookArray.toString()
+  author[0].book = bookArray.toString()
+  book[0].idAuthor = idAuthorArray.toString()
+  book[0].author = authorArray.toString()
   
    return res.json(arquivo)
 })
