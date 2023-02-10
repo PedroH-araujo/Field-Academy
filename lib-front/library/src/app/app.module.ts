@@ -18,6 +18,8 @@ import { UpdateBooksComponent } from './components/update-books/update-books.com
 import { UpdateAuthorsComponent } from './components/update-authors/update-authors.component';
 import { DeleteBooksComponent } from './components/delete-books/delete-books.component';
 import { DeleteAuthorsComponent } from './components/delete-authors/delete-authors.component';
+import { ConnectAuthorBookComponent } from './components/connect-author-book/connect-author-book.component';
+import { ConnectBookAuthorComponent } from './components/connect-book-author/connect-book-author.component';
 
 
 
@@ -31,7 +33,9 @@ import { DeleteAuthorsComponent } from './components/delete-authors/delete-autho
     UpdateBooksComponent,
     UpdateAuthorsComponent,
     DeleteBooksComponent,
-    DeleteAuthorsComponent
+    DeleteAuthorsComponent,
+    ConnectAuthorBookComponent,
+    ConnectBookAuthorComponent
   ],
   imports: [
     BrowserModule,

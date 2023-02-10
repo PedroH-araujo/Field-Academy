@@ -19,3 +19,7 @@ button{
   margin: 10px;
 }
 
+.icon{
+  cursor: pointer;
+  color: black;
+}

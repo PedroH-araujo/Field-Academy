@@ -15,7 +15,12 @@
   <!-- Author Column -->
   <ng-container matColumnDef="book">
     <th mat-header-cell *matHeaderCellDef> Book </th>
-    <td mat-cell *matCellDef="let element"> {{element.book}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.book}}
+      <a routerLink="/connect-book-author/{{ element.id }}"> <mat-icon class="icon">add_circle</mat-icon> </a>
+      <a routerLink="/connect-book-author/{{ element.id }}">
+        <mat-icon class="icon">remove_circle</mat-icon>
+      </a>
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="action">

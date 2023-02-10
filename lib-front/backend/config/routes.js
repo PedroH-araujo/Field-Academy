@@ -115,11 +115,10 @@ routes.put('/author/:id/:name', (req, res) => {
 
 // Author-Book Routes
 
-routes.post('/author-book', (req, res) => {
-   const body = req.body
+routes.post('/author-book/:idA/:idB', (req, res) => {
    
-   const idAuth = body.idAuthor
-   const idBook = body.idBook
+   const idAuth = req.params.idA
+   const idBook = req.params.idB
 
    let author = autor.filter(element => {
       if((element.id == idAuth)){
@@ -147,11 +146,10 @@ routes.post('/author-book', (req, res) => {
    return res.json(arquivo)
 })
 
-routes.delete('/author-book', (req, res) => {
-   const body = req.body
+routes.delete('/author-book/:idA/:idB', (req, res) => {
    
-   const idAuth = body.idAuthor
-   const idBook = body.idBook
+   const idAuth = req.params.idA
+   const idBook = req.params.idB
   
    let author = arquivo.author.filter(element => {
       if((element.id == idAuth)){

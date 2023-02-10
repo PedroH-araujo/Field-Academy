@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { LibReadComponent } from '../read-books/lib-read.component';
 import { Component } from '@angular/core';
 import { Book } from '../lib.model';
@@ -17,12 +18,13 @@ export class CreateBooksComponent {
     author: ''
   }
 
-  constructor(private libService: LibService){}
+  constructor(private libService: LibService, private router: Router){}
 
 
   createBooks(){
     this.libService.createBook(this.book).subscribe(() => {
       alert('Livro Criado')
+      this.router.navigate(['/books'])
     })
   }
 

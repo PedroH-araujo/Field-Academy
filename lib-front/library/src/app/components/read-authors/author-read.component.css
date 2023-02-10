@@ -18,3 +18,8 @@ button{
   height: 33%;
   margin: 10px;
 }
+
+.icon{
+  color: black;
+  cursor: pointer;
+}

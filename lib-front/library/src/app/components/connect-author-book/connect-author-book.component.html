@@ -1,5 +1,4 @@
-
-<table mat-table [dataSource]="books">
+<table mat-table [dataSource]="authors">
 
   <!-- ID Column -->
   <ng-container matColumnDef="id">
@@ -14,28 +13,19 @@
   </ng-container>
 
   <!-- Author Column -->
-  <ng-container matColumnDef="author">
-    <th mat-header-cell *matHeaderCellDef> Author </th>
-    <td mat-cell *matCellDef="let element"> {{element.author}}
-      <a routerLink="/connect-author-book/{{ element.id }}"> <mat-icon class="icon">add_circle</mat-icon> </a>
-    <a routerLink="/connect-author-book/{{ element.id }}">
-      <mat-icon class="icon">remove_circle</mat-icon>
-    </a>
-    </td>
+  <ng-container matColumnDef="book">
+    <th mat-header-cell *matHeaderCellDef> Book </th>
+    <td mat-cell *matCellDef="let element"> {{element.book}} </td>
   </ng-container>
 
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef> Action </th>
     <td class="btn" mat-cell *matCellDef="let element">
-      <a routerLink="/update-books/{{ element.id }}">
-        <button mat-fab color="primary">
-          <mat-icon>update</mat-icon>
-        </button>
+      <a (click)="connectAuthorBook(element.id)">
+          <mat-icon >add_circle</mat-icon>
       </a>
-      <a routerLink="/delete-books/{{ element.id }}">
-        <button mat-fab color="primary">
-          <mat-icon>delete</mat-icon>
-        </button>
+      <a (click)="disconnectBookAuthor(element.id)">
+        <mat-icon class="icon">remove_circle</mat-icon>
       </a>
     </td>
   </ng-container>

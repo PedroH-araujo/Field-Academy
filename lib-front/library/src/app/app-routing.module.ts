@@ -1,3 +1,4 @@
+import { ConnectAuthorBookComponent } from './components/connect-author-book/connect-author-book.component';
 import { DeleteAuthorsComponent } from './components/delete-authors/delete-authors.component';
 import { CreateBooksComponent } from './components/create-books/create-books.component';
 import { AuthorReadComponent } from './components/read-authors/author-read.component';
@@ -8,6 +9,7 @@ import { CreateComponent } from './components/create-authors/create.component';
 import { UpdateBooksComponent } from './components/update-books/update-books.component';
 import { UpdateAuthorsComponent } from './components/update-authors/update-authors.component';
 import { DeleteBooksComponent } from './components/delete-books/delete-books.component';
+import { ConnectBookAuthorComponent } from './components/connect-book-author/connect-book-author.component';
 
 const routes: Routes = [{
   path: 'books',
@@ -33,6 +35,12 @@ const routes: Routes = [{
 },{
   path: 'delete-authors/:id',
   component: DeleteAuthorsComponent
+},{
+  path: 'connect-author-book/:id',
+  component: ConnectAuthorBookComponent
+},{
+  path: 'connect-book-author/:id',
+  component: ConnectBookAuthorComponent
 },
 ];
 
