@@ -25,5 +25,11 @@ export class CreateComponent {
     })
   }
 
+  ngOnInit(): void {
+    this.authorService.readAuthor().subscribe(element => {
+      this.author.id = element.length + 1
+    })
+  }
+
 
 }

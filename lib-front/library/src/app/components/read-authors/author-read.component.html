@@ -1,3 +1,4 @@
+<h1 id="title">AUTHORS</h1>
 <table mat-table [dataSource]="authors">
 
   <!-- ID Column -->
@@ -17,7 +18,7 @@
     <th mat-header-cell *matHeaderCellDef> Book </th>
     <td mat-cell *matCellDef="let element"> {{element.book}}
       <a routerLink="/connect-book-author/{{ element.id }}"> <mat-icon class="icon">add_circle</mat-icon> </a>
-      <a routerLink="/connect-book-author/{{ element.id }}">
+      <a routerLink="/connect-book-author/{{ element.id }}" [queryParams]="{'remove-relation': true}">
         <mat-icon class="icon">remove_circle</mat-icon>
       </a>
     </td>

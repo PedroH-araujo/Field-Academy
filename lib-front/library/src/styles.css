@@ -19,3 +19,8 @@ form{
   flex-direction: column;
   width: 300px;
 }
+#title{
+  color: white;
+  text-align: center;
+  font-size: 40px;
+}
