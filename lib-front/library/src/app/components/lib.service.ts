@@ -19,4 +19,16 @@ export class LibService {
   createBook(book: Book): Observable<Book>{
     return this.http.post<Book>('http://localhost:3000/book',book)
   }
+
+  updateBook(id: number,name: string){
+    return this.http.put(`http://localhost:3000/book/${id}/${name}`,null)
+  }
+
+  readBookById(id:any): Observable<Book>{
+    return this.http.get<Book>(`http://localhost:3000/book/${id}`)
+  }
+
+  deleteBook(id:any){
+    return this.http.delete(`http://localhost:3000/book/${id}`)
+  }
 }

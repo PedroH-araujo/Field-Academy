@@ -1,4 +1,4 @@
-import { LibService } from './../lib.service';
+import { LibService } from '../lib.service';
 import { Component } from '@angular/core';
 import { Book } from '../lib.model'
 

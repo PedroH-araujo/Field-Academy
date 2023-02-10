@@ -9,6 +9,17 @@ routes.get('/books', (req, res) => {
    return res.json(arquivo.books)
 })
 
+routes.get('/book/:id', (req, res) => {
+   const id = req.params.id
+
+   let newArq = books.filter(element => {
+      if((element.id == id)){
+      return element
+      }
+   })
+
+   res.send(newArq[0])
+})
 
 routes.post('/book', (req, res) => {
    let body = req.body
@@ -42,7 +53,7 @@ routes.put('/book/:id/:name', (req, res) => {
       }
    })
    
-   books.splice(id,1,newArq[0])
+   books.splice(id - 1,1,newArq[0])
 
    return res.json(books)
 })
@@ -51,6 +62,18 @@ routes.put('/book/:id/:name', (req, res) => {
 
 routes.get('/authors', (req, res) => {
    return res.json(arquivo.author)
+})
+
+routes.get('/author/:id', (req, res) => {
+   const id = req.params.id
+
+   let newArq = autor.filter(element => {
+      if((element.id == id)){
+      return element
+      }
+   })
+
+   res.send(newArq[0])
 })
 
 routes.post('/author', (req, res) => {
@@ -85,7 +108,7 @@ routes.put('/author/:id/:name', (req, res) => {
       }
    })
    
-   autor.splice(id,1,newArq[0])
+   autor.splice(id - 1,1,newArq[0])
 
    return res.json(autor)
 })

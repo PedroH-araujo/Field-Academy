@@ -19,4 +19,16 @@ export class AuthorService {
   createAuthor(author: Author){
     return this.http.post('http://localhost:3000/author',author)
   }
+
+  updateAuthor(id: number,name: string){
+    return this.http.put(`http://localhost:3000/author/${id}/${name}`,null)
+  }
+
+  readAuthorById(id:any): Observable<Author>{
+    return this.http.get<Author>(`http://localhost:3000/author/${id}`)
+  }
+
+  deleteAuthor(id:any){
+    return this.http.delete(`http://localhost:3000/author/${id}`)
+  }
 }

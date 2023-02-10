@@ -22,12 +22,16 @@
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef> Action </th>
     <td class="btn" mat-cell *matCellDef="let element">
-      <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
-        <mat-icon>update</mat-icon>
-      </button>
-      <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
-        <mat-icon>delete</mat-icon>
-      </button>
+      <a routerLink="/update-books/{{ element.id }}">
+        <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+          <mat-icon>update</mat-icon>
+        </button>
+      </a>
+      <a routerLink="/delete-books/{{ element.id }}">
+        <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </a>
     </td>
   </ng-container>
 

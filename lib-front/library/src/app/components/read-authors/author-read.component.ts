@@ -1,4 +1,4 @@
-import { AuthorService } from './../author.service';
+import { AuthorService } from '../author.service';
 import { Component } from '@angular/core';
 import { Author } from '../lib.model';
 
@@ -10,7 +10,7 @@ import { Author } from '../lib.model';
 export class AuthorReadComponent {
 
   authors : Author[] = []
-  displayedColumns: string[] = ['id', 'nome', 'book'];
+  displayedColumns: string[] = ['id', 'nome', 'book', 'action'];
 
   constructor(private authorServie: AuthorService){}
 

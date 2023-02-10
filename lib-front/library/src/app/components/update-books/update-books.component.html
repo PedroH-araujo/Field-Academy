@@ -1,0 +1,12 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>ID</mat-label>
+    <input matInput [(ngModel)]="book.id" name="id" disabled>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>nome</mat-label>
+    <input matInput [(ngModel)]="book.nome" name="nome">
+  </mat-form-field>
+</form>
+
+<button mat-raised-button (click)="updateBook()">Update book</button>

@@ -8,15 +8,14 @@ ul{
 }
 
 .btn{
-  width: 20px;
+  width: 150px;
+  padding: 0px;
 }
 
 
 button{
-  width: 50%;
-  height: 30%;
+  width: 27%;
+  height: 33%;
+  margin: 10px;
 }
 
-button:first-child{
-  margin-right: 10px;
-}
