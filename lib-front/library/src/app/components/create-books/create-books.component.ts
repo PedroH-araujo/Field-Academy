@@ -28,4 +28,10 @@ export class CreateBooksComponent {
     })
   }
 
+  ngOnInit(): void {
+    this.libService.readBook().subscribe(element => {
+      this.book.id = element.length + 1
+    })
+  }
+
 }

@@ -1,3 +1,4 @@
+import { AuthorService } from './../author.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component } from '@angular/core';
 import { Book } from '../lib.model';
@@ -12,15 +13,28 @@ export class ConnectBookAuthorComponent {
   books: Book[] = [];
   displayedColumns: string[] = ['id', 'nome', 'author', 'action'];
   idAuthor: string | null = '0'
+  nameAuthor: string = ''
 
-  constructor(private libService:LibService, private router:Router, private route: ActivatedRoute){}
+  constructor(private libService:LibService, private router:Router, private route: ActivatedRoute, private authorService: AuthorService){}
 
   ngOnInit(): void {
-    this.libService.readBook().subscribe(books => {
-      this.books = books
-    })
     const id = this.route.snapshot.paramMap.get('id')
     this.idAuthor = id
+
+    this.authorService.readAuthorById(id).subscribe(author => {
+      this.nameAuthor = author.nome
+      console.log(this.nameAuthor)
+    })
+    this.libService.readBook().subscribe(books => {
+      let res = (books.filter(element => {
+        const isRemoveRelation = this.route.snapshot.queryParamMap.get('remove-relation')
+        if(isRemoveRelation) {
+          return element.author == this.nameAuthor && element.author
+        }
+        return element
+      }))
+      this.books = res
+    })
   }
 
   connectBookAuthor(idB:any){
