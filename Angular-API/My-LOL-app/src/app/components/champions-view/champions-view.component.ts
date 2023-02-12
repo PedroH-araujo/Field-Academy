@@ -1,7 +1,6 @@
 import { PageEvent } from '@angular/material';
 import { ChampionService } from './../champion.service';
 import { Component, OnInit } from '@angular/core';
-import { NavComponent } from 'src/app/view/nav/nav.component';
 
 @Component({
   selector: 'app-champions-view',
@@ -10,7 +9,7 @@ import { NavComponent } from 'src/app/view/nav/nav.component';
 })
 export class ChampionsViewComponent implements OnInit {
 
-  constructor(private championsService: ChampionService, private paginator: NavComponent) { }
+  constructor(private championsService: ChampionService) { }
 
   championList: any = []
   championList5: any = []

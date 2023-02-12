@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChampionsViewComponent } from './components/champions-view/champions-view.component';
 import { HttpClientModule } from '@angular/common/http';
-import { NavComponent } from './view/nav/nav.component'
+import { NavComponent } from './components/nav/nav.component'
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -23,7 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatPaginatorModule,
     BrowserAnimationsModule
   ],
-  providers: [NavComponent],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

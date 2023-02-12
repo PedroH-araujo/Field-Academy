@@ -10,6 +10,7 @@
 <div class="container">
   <div class="champion" *ngFor="let champ of championList5">
     <img src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{ champ.id }}_0.jpg">
+    <span class="champName">{{ champ.id }}</span>
     <div class="type">
       <img *ngFor="let type of champ.tags" src="../../../assets/{{ type }}_icon.webp">
     </div>

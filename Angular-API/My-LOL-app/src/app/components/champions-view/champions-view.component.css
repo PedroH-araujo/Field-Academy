@@ -1,3 +1,16 @@
+@font-face {
+  font-family: 'Friz';
+  src: url('../../../assets/fonts/Friz.ttf')
+  format('truetype')
+}
+
+.paginator{
+  display: flex;
+  justify-content: center;
+  margin: 50px 0 20px;
+  font-size: 25px;
+}
+
 .container{
   display: flex;
   margin: auto;
@@ -16,6 +29,16 @@
   width: 200px;
 }
 
+.champName{
+  background-color: black;
+  color: #e0c379;
+  width: 200px;
+  text-align: center;
+  font-family: 'friz';
+  font-size: 25px;
+  border-radius: 0 0 10px 10px;
+}
+
 .type{
   display: flex;
   justify-content: space-evenly;
@@ -26,10 +49,6 @@
   width: 25%;
 }
 
-.paginator{
-  background-color: aliceblue;
-  display: flex;
-  justify-content: center;
-  margin: 100px 0 20px;
+.type > img:hover{
+  
 }
-
