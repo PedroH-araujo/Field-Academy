@@ -20,6 +20,7 @@ export class ChampionsViewComponent implements OnInit {
     this.championsService.getChampions().subscribe(champions => {
       this.championList = Object.values(champions.data)
       this.championList5 = this.championList.slice(0,10)
+      console.log(this.championList5)
     })
   }
 

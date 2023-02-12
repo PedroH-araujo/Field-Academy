@@ -1,1 +1,12 @@
+.container{
+  background-color: rgba(0, 0, 0, 0.725);
+  display: flex;
+}
 
+.image{
+  width: 200px;
+}
+
+.lore{
+  color: #e0c379;
+}
