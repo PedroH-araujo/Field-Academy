@@ -1,15 +1,23 @@
+<a routerLink=""><div class="button"><button>Back</button></div></a>
 <div class="container">
-<img class="image" src="../../../assets/Nami_0.jpg">
+<img class="image" src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{ champObject.id }}_0.jpg">
 <div class="content">
+  <h1 class="title">{{ champObject.title }}</h1>
   <div class="skills">
-    <img src="">
-    <img src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/NamiQ.png">
-    <img src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/NamiW.png">
-    <img src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/NamiE.png">
-    <img src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/NamiR.png">
+    <img src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/passive/{{ champObject.passive.image.full }}"(click)="showSkillDescription(4)">
+    <img *ngFor="let spell of champObject.spells; let i = index"
+    src="http://ddragon.leagueoflegends.com/cdn/13.3.1/img/spell/{{ spell.id }}.png"
+    (click)="showSkillDescription(i)">
+  </div>
+  <div [ngSwitch]="skill">
+    <span *ngSwitchCase="4" class="skill_description">{{ champObject.passive.description }}</span>
+    <span *ngSwitchCase="0" class="skill_description">{{ champObject.spells[0].description }}</span>
+    <span *ngSwitchCase="1" class="skill_description">{{ champObject.spells[1].description }}</span>
+    <span *ngSwitchCase="2" class="skill_description">{{ champObject.spells[2].description }}</span>
+    <span *ngSwitchCase="3" class="skill_description">{{ champObject.spells[3].description }}</span>
   </div>
   <div class="lore"><h1>Lore</h1>
-    <p>Abandonando a Ordem Kinkou e seu título de Punho das Sombras, Akali agora ataca sozinha, pronta para ser a arma mortal que seu povo precisa. Embora ela mantenha tudo o que aprendeu com seu mestre Shen, ela se comprometeu a defender Ionia de seus inimigos, um assassinato de cada vez. Akali pode atacar em silêncio, mas sua mensagem será ouvida em voz alta e clara: “Temam a assassina sem mestre”</p>
+    <p>{{ champObject.lore }}</p>
   </div>
 </div>
 </div>

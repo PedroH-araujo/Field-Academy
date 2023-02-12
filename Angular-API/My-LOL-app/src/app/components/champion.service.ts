@@ -14,7 +14,7 @@ export class ChampionService {
   return this.http.get<any>(this.listUrl)
   }
 
-  getImgChampion(name: string){
-    return this.http.get<any>(`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${name}_0.jpg`)
+  getChampionDetails(name: string){
+    return this.http.get<any>(`http://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/champion/${name}.json`)
   }
 }
