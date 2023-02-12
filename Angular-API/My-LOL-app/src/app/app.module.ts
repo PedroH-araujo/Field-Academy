@@ -4,19 +4,26 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChampionsViewComponent } from './components/champions-view/champions-view.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { NavComponent } from './view/nav/nav.component'
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChampionsViewComponent
+    ChampionsViewComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatPaginatorModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [NavComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

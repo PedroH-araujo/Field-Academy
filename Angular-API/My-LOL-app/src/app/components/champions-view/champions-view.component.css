@@ -1,7 +1,6 @@
 .container{
-  background-color: aliceblue;
   display: flex;
-  margin: 100px auto;
+  margin: auto;
   width: 1500px;
   flex-wrap: wrap;
 }
@@ -26,3 +25,11 @@
 .type > img{
   width: 25%;
 }
+
+.paginator{
+  background-color: aliceblue;
+  display: flex;
+  justify-content: center;
+  margin: 100px 0 20px;
+}
+
