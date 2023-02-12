@@ -16,6 +16,7 @@ export class ChampionsViewComponent implements OnInit {
   championSearchList: any = []
   getIndex1: number = 0
   getIndex2: number = 10
+  matTooltipPosition = 'above'
 
   ngOnInit() {
     this.championsService.getChampions().subscribe(champions => {

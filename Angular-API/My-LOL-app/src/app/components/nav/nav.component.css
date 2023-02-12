@@ -67,23 +67,36 @@ button:active {
   font-size: 50px;
 }
 
+
+
 .skills > img{
-  margin: 20px;
+  margin: 5px 20px;
   border-radius: 35px;
+  border: 3px solid  #fbc456;
+
 }
 
 .skills > img:hover{
   cursor: pointer;
-  width: 80px;
 }
 
 .skill_description{
   color: #e0c379;
+  text-align: center;
+}
+
+.skill_description > h3{
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.skill_description > p{
   font-size: 20px;
 }
 
 .lore{
   font-size: 25px;
   color: #e0c379;
-  margin: 25px;
+  margin: 0 25px;
 }

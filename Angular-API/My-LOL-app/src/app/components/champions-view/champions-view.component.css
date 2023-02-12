@@ -62,15 +62,19 @@
   text-align: center;
   font-family: 'friz';
   font-size: 25px;
-  border-radius: 0 0 10px 10px;
 }
 
 .type{
   display: flex;
   justify-content: space-evenly;
-  width: 300px;
+  width: 200px;
+  background-color: #000000;
+  margin-bottom: 15px;
+  border-radius: 0 0 10px 10px;
 }
 
 .type > img{
-  width: 25%;
+  width: 60px;
+  background: #1e2328;
+  border-radius: 30px;
 }

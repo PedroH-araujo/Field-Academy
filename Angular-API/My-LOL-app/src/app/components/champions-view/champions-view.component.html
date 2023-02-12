@@ -13,9 +13,7 @@
     <img routerLink="/champion/{{ champ.id }}" src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{ champ.id }}_0.jpg">
     <span class="champName">{{ champ.id }}</span>
     <div class="type">
-      <img *ngFor="let type of champ.tags" src="../../../assets/{{ type }}_icon.webp">
-    </div>
+        <img *ngFor="let type of champ.tags" src="../../../assets/{{ type }}_icon.webp"
+        data-toggle="tooltip" title="{{ type }}">
   </div>
-
-
 </div>

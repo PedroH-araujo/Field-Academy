@@ -10,11 +10,26 @@
     (click)="showSkillDescription(i)">
   </div>
   <div [ngSwitch]="skill">
-    <span *ngSwitchCase="4" class="skill_description">{{ champObject.passive.description }}</span>
-    <span *ngSwitchCase="0" class="skill_description">{{ champObject.spells[0].description }}</span>
-    <span *ngSwitchCase="1" class="skill_description">{{ champObject.spells[1].description }}</span>
-    <span *ngSwitchCase="2" class="skill_description">{{ champObject.spells[2].description }}</span>
-    <span *ngSwitchCase="3" class="skill_description">{{ champObject.spells[3].description }}</span>
+    <span *ngSwitchCase="4" class="skill_description">
+      <h3>{{ champObject.passive.name }} (P)</h3>
+      <p>{{ champObject.passive.description }}</p>
+    </span>
+    <span *ngSwitchCase="0" class="skill_description">
+      <h3>{{ champObject.spells[0].name }} (Q)</h3>
+      <p>{{ champObject.spells[0].description }}</p>
+    </span>
+    <span *ngSwitchCase="1" class="skill_description">
+      <h3>{{ champObject.spells[1].name }} (W)</h3>
+      <p>{{ champObject.spells[1].description }}</p>
+    </span>
+    <span *ngSwitchCase="2" class="skill_description">
+      <h3>{{ champObject.spells[2].name }} (E)</h3>
+      <p>{{ champObject.spells[2].description }}</p>
+    </span>
+    <span *ngSwitchCase="3" class="skill_description">
+      <h3>{{ champObject.spells[3].name }} (R)</h3>
+      <p>{{ champObject.spells[3].description }}</p>
+    </span>
   </div>
   <div class="lore"><h1>Lore</h1>
     <p>{{ champObject.lore }}</p>
