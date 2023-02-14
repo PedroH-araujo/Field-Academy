@@ -1,7 +1,7 @@
 const express = require('express')
 const axios = require('axios')
 const routes = express.Router()
-let arquivo = require('../src/data/arquivo.json')
+
 
 
 routes.get('/:offset/:limit', (req, resp) => {
@@ -14,7 +14,9 @@ routes.get('/:offset/:limit', (req, resp) => {
             return res.data
          })
       let champList = Object.values(championListFull.data).slice(offset,limit)
-      resp.send(champList)
+      let { id } = champList[2]
+      let { tags } = champList[2]
+      resp.send(`"id":"${id}","tags":"${tags}"`)
    } 
 })
 
@@ -33,6 +35,19 @@ routes.get('/:name', (req, resp) => {
    } 
 })
 
+
+// routes.get('/details', (req, resp) => {
+//    const name = req.params.name
+//    getChampion()
+//    async function getChampion(){
+//       const championListFull = await axios.get(`http://ddragon.leagueoflegends.com/cdn/13.3.1/data/pt_BR/$champion.json`)
+//          .then(res => {
+//             return res.data
+//          })
+//       let champList = Object.values(championListFull.data)
+//       resp.send(champList')
+//    } 
+// })
 
 
 module.exports = routes

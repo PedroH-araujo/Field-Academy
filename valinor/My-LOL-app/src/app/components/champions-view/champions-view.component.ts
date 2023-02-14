@@ -67,6 +67,7 @@ export class ChampionsViewComponent implements OnInit {
       console.log(champions)
       this.championSearchList = champions
       this.championList5 = this.championSearchList.slice(this.getIndex1,this.getIndex2)
+      this.pageLength = this.championSearchList.length
     })
   }
 }
