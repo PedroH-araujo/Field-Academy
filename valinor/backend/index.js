@@ -4,8 +4,6 @@ const morgan = require('morgan')
 const cors = require('cors')
 const app = express()
 const routes = require('./config/routes')
-const axios = require('axios')
-let arquivo = require('./src/data/arquivo.json')
 
 app.use(express.json())
 app.use((req, res, next) => {
