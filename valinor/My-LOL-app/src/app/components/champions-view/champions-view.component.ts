@@ -19,10 +19,10 @@ export class ChampionsViewComponent implements OnInit {
   matTooltipPosition = 'above'
 
   ngOnInit() {
-    this.championsService.getChampions().subscribe(champions => {
-      this.championList = Object.values(champions.data)
-      this.championList5 = this.championList.slice(0,10)
-      this.pageLength = this.championList.length
+    this.championsService.getChampions(0,10).subscribe(champions => {
+      this.championList5 = champions
+      console.log(champions)
+      this.pageLength = 162
     })
   }
 
@@ -44,9 +44,8 @@ export class ChampionsViewComponent implements OnInit {
 
     console.log(e.length)
     if(this.championSearchList == ''){
-      this.championsService.getChampions().subscribe(champions => {
-        this.championList = Object.values(champions.data)
-        this.championList5 = this.championList.slice(this.getIndex1,this.getIndex2)
+      this.championsService.getChampions(this.getIndex1,this.getIndex2).subscribe(champions => {
+        this.championList5 = champions
       })
     } else {
       this.championList5 = this.championSearchList.slice(this.getIndex1,this.getIndex2)
@@ -56,13 +55,18 @@ export class ChampionsViewComponent implements OnInit {
 
   championSearch(event: any){
     let inputText = event.target.value
-    this.championsService.getChampions().subscribe(champions => {
-      this.championList = Object.values(champions.data)
-      this.championSearchList = this.championList.filter((valor: any) => {
-        return valor.id.includes(inputText)
+
+    if(inputText == ''){
+      this.championsService.getChampions(0,10).subscribe(champions => {
+        this.championList5 = champions
+        this.pageLength = 162
+        console.log(champions)
       })
+    }
+    this.championsService.findChampion(inputText).subscribe(champions => {
+      console.log(champions)
+      this.championSearchList = champions
       this.championList5 = this.championSearchList.slice(this.getIndex1,this.getIndex2)
-      this.pageLength = this.championSearchList.length
     })
   }
 }

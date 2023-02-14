@@ -8,13 +8,17 @@ export class ChampionService {
 
   constructor(private http: HttpClient) { }
 
-  listUrl = 'http://ddragon.leagueoflegends.com/cdn/13.3.1/data/pt_BR/champion.json'
+  BaseUrl = 'http://localhost:3000'
 
-  getChampions(){
-  return this.http.get<any>(this.listUrl)
+  getChampions(offset: number, limit: number){
+  return this.http.get<any>(`${this.BaseUrl}/${offset}/${limit}`)
   }
 
   getChampionDetails(name: string){
     return this.http.get<any>(`http://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/champion/${name}.json`)
+  }
+
+  findChampion(name: string){
+    return this.http.get<any>(`${this.BaseUrl}/${name}`)
   }
 }
