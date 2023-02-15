@@ -1,0 +1,12 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 800px;
+  height: 800px;
+  background-color: aliceblue;
+}
+
+.container > a > img{
+  width: 200px;
+}

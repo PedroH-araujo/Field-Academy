@@ -10,6 +10,10 @@ export class ChampionService {
 
   BaseUrl = 'http://localhost:3000'
 
+  createDataBase(){
+    return this.http.get(this.BaseUrl)
+  }
+
   getChampions(offset: number, limit: number){
   return this.http.get<any>(`${this.BaseUrl}/${offset}/${limit}`)
   }

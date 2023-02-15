@@ -39,10 +39,8 @@ async function fatiaTable(id1,id2){
    return result.rows
 }
 
-
-routes.get('/:offset/:limit', (req, response) => {
-   const offset = req.params.offset
-   const limit = req.params.limit
+//CRIA MINHA DATABASE
+routes.get('/', (req, response) => {
 
    getChampion()
    async function getChampion() {
@@ -55,11 +53,21 @@ routes.get('/:offset/:limit', (req, response) => {
             createTable(champList)
             dataChampions = false
          }
-      fatiaTable(offset,limit).then(rows => {
-         response.send(rows)
-      })
+         response.json('DataBase criada')
    }
 })
+
+//MANDA OS DADOS DA DATABASE REFERENTE A PAGINAÇÃO NO FRONT
+routes.get('/:offset/:limit', (req, response) => {
+   const offset = req.params.offset
+   const limit = req.params.limit
+
+   fatiaTable(offset,limit).then(rows => {
+      response.send(rows)
+   })
+   
+})
+
 
 routes.get('/:name', (req, resp) => {
    const name = req.params.name
