@@ -29,7 +29,7 @@ export class ChampionsViewComponent implements OnInit {
   pageLength = 0
   pageSize = 10;
   pageIndex = 0;
-  pageSizeOptions1 = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160];
+  pageSizeOptions1 = [1, 11, 21, 31, 41, 51, 61, 71, 81, 91, 101, 111, 121, 131, 141, 151, 161];
   pageSizeOptions2 = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 162];
 
   pageEvent: PageEvent = new PageEvent;

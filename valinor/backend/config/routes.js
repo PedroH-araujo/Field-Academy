@@ -6,7 +6,7 @@ let dataChampions = false
 
 async function createTable(s) {
 
-   const query = "INSERT INTO champions (champ,tags) VALUES ($1,$2)"
+   const query = "INSERT INTO champions (name,tags) VALUES ($1,$2)"
 
    for (let i = 0; i < s.length; i++) {
       await db.query(query, [`${s[i].id}`, [s[i].tags[0], s[i].tags[1]]])
@@ -34,7 +34,7 @@ async function showTable() {
 
 async function fatiaTable(id1,id2){
    let result
-   result = await db.query(`SELECT champ,tags FROM champions WHERE id BETWEEN ${id1} AND ${id2}`)
+   result = await db.query(`SELECT name,tags FROM champions WHERE id BETWEEN ${id1} AND ${id2}`)
 
    return result.rows
 }
