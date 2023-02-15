@@ -2,6 +2,7 @@ const express = require('express')
 const axios = require('axios')
 const routes = express.Router()
 const db = require('../src/data/arquivo')
+let dataChampions = true
 
 
 async function createTable(s){
@@ -19,16 +20,17 @@ async function createTable(s){
       console.log(`Foi ${i}`)
    }
 
-   // const mostra = await db.query(`SELECT * FROM public.evento`)
 
-   await db.end()
+
    console.log('FOI TUDO')
 }
 
 async function showTable(){
-   await db.connect()
+
    let result
    result = await db.query("SELECT * FROM champions")
+
+
    return result.rows
 }
 
@@ -36,7 +38,7 @@ async function showTable(){
 routes.get('/:offset/:limit', (req, resp) => {
    const offset = req.params.offset
    const limit = req.params.limit
-   const dataChampions = true
+
 
    getChampion()
    async function getChampion(){
@@ -49,7 +51,9 @@ routes.get('/:offset/:limit', (req, resp) => {
          createTable(champList)
          dataChampions = false
       }
-      showTable().then(e => resp.send(e))
+      showTable().then(rows => {
+         resp.send(rows)
+      })
    } 
 })
 
@@ -64,7 +68,7 @@ routes.get('/:name', (req, resp) => {
       let champList = Object.values(championListFull.data).filter( champ => {
          return champ.id.includes(name)
        })
-      resp.send(champList)
+       
    } 
 })
 

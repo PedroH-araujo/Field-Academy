@@ -25,7 +25,8 @@ async function createTable(){
       console.log(`Foi ${i}`)
    }
 
-   // const mostra = await db.query(`SELECT * FROM public.evento`)
+   result = await db.query("SELECT * FROM champions")
+
 
    await db.end()
 }
@@ -36,6 +37,8 @@ async function showTable(){
    await db.connect()
    let result
    result = await db.query("SELECT * FROM champions")
+
+   await db.end()
    return result.rows
 }
 
