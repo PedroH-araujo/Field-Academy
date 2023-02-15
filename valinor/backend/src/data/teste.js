@@ -1,5 +1,15 @@
 const db = require('./arquivo')
 
+let s = [{ "id": "Ahri",
+"tags": [
+   "Mage",
+   "Assassin"
+ ]},{ "id": "Aatrox",
+ "tags": [
+   "Fighter",
+   "Tank"]}
+]
+
 async function createTable(){
    await db.connect()
 
@@ -10,12 +20,24 @@ async function createTable(){
 
    const query = "INSERT INTO champions (champ,tags) VALUES ($1,$2)"
 
-   await db.query(query, ['Peter', ['Lutador','Matador']])
+   for (let i = 0; i < s.length; i++) {
+      await db.query(query, [`${s[i].id}`, [s[i].tags[0],s[i].tags[1]]])
+      console.log(`Foi ${i}`)
+   }
 
    // const mostra = await db.query(`SELECT * FROM public.evento`)
 
    await db.end()
-   console.log('FOI')
 }
 
-createTable()
+
+
+async function showTable(){
+   await db.connect()
+   let result
+   result = await db.query("SELECT * FROM champions")
+   return result.rows
+}
+
+showTable().then(e => console.log(e))
+
