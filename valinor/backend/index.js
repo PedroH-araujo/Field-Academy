@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const app = express()
 const routes = require('./config/routes')
+const db = require('./src/data/arquivo')
 
 app.use(express.json())
 app.use((req, res, next) => {
@@ -19,6 +20,7 @@ app.use(routes)
 
 
 app.listen(3000, () => {
+   db.connect()
    console.log('começou a escutar...')
    console.log('http://localhost:3000')
 })

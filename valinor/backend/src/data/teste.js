@@ -1,4 +1,5 @@
 const db = require('./arquivo')
+let dataChampions = 0
 
 let s = [{ "id": "Ahri",
 "tags": [
@@ -42,5 +43,33 @@ async function showTable(){
    return result.rows
 }
 
-showTable().then(e => console.log(e))
+async function fatiaTable(id1,id2){
+   await db.connect()
+   let result
+   result = await db.query(`SELECT champ,tags FROM champions WHERE id BETWEEN ${id1} AND ${id2}`)
 
+   await db.end()
+   return result.rows
+}
+
+async function countTable() {
+   await db.connect()
+   let result
+   result = await db.query("SELECT COUNT(*) FROM champions")
+
+   await db.end()
+   return result.rows[0].count
+
+}
+
+countTable().then(res => {
+   return res
+})
+
+if(countTable() !== '162'){
+   console.log('NAO')
+}else{
+   console.log('SIM')
+}
+
+// countTable().then(console.log(dataChampions))

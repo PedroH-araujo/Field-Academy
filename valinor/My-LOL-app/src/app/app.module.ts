@@ -10,7 +10,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatIconModule} from '@angular/material/icon';
-import { HeaderComponent } from './view/header/header.component'
+import { HeaderComponent } from './view/header/header.component';
+import { HomeComponent } from './view/home/home.component'
 
 
 
@@ -19,7 +20,8 @@ import { HeaderComponent } from './view/header/header.component'
     AppComponent,
     ChampionsViewComponent,
     NavComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
