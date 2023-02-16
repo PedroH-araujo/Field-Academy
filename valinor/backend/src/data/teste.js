@@ -19,11 +19,11 @@ async function createTable(){
    //    nome VARCHAR (20) UNIQUE NOT NULL
    // )`)
 
-   const query = "INSERT INTO champions (champ,tags) VALUES ($1,$2)"
+   const query = "INSERT INTO champions (name,tags) VALUES ($1,$2)"
 
    for (let i = 0; i < s.length; i++) {
-      await db.query(query, [`${s[i].id}`, [s[i].tags[0],s[i].tags[1]]])
-      console.log(`Foi ${i}`)
+      let name = s[i].id
+      console.log(name)
    }
 
    result = await db.query("SELECT * FROM champions")
@@ -32,13 +32,4 @@ async function createTable(){
    await db.end()
 }
 
-async function searchTable(name){
-   await db.connect()
-
-   result = await db.query(`SELECT name,tags FROM champions WHERE name LIKE '${name}%'`)
-
-   await db.end()
-   return result
-}
-
-searchTable('Aa').then(res => console.log(res.rows))
+createTable()

@@ -21,10 +21,10 @@ export class ChampionService {
   }
 
   getChampionDetails(name: string | null) {
-    return this.http.get<any>(`http://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/champion/${name}.json`)
+    return this.http.get<any>(`${this.BaseUrl}/champion/details/${name}`)
   }
 
-  findChampion(name: string) {
+  findChampion(name: string | null) {
     return this.http.get<Champion[]>(`${this.BaseUrl}/${name}`)
   }
 }

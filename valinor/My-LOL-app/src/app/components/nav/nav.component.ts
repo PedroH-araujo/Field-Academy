@@ -1,3 +1,4 @@
+import { Champion } from './../champion.model';
 import { ChampionService } from './../champion.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -11,17 +12,28 @@ export class NavComponent implements OnInit {
 
   constructor(private route:ActivatedRoute, private championService: ChampionService) { }
 
-  champObject: any = {}
+  champObject: Champion = {
+    name: '',
+    title: '',
+    tags: [],
+    passiveImage: '',
+    passiveName: '',
+    passiveDescription: '',
+    spellsID: [],
+    spellsName: [],
+    spellsDescription: [],
+    lore: ''
+  }
+
   skill: Number = 8
 
 
   ngOnInit(): void {
     const name = this.route.snapshot.paramMap.get('name')
     console.log(name)
-    this.championService.getChampionDetails(name).subscribe(champ => {
-      console.log(champ)
-      console.log(Object.entries(champ.data)[0][1])
-      this.champObject = Object.entries(champ.data)[0][1]
+    this.championService.findChampion(name).subscribe(champ => {
+      console.log(champ[0])
+      this.champObject = champ[0]
     })
   }
 
