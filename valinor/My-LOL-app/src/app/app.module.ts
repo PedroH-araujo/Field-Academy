@@ -30,7 +30,7 @@ import { HomeComponent } from './view/home/home.component'
     MatPaginatorModule,
     BrowserAnimationsModule,
     MatTooltipModule,
-    MatIconModule
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

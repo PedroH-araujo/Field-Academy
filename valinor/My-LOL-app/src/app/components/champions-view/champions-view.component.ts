@@ -2,6 +2,7 @@ import { Champion } from './../champion.model';
 import { PageEvent } from '@angular/material';
 import { ChampionService } from './../champion.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-champions-view',
@@ -10,23 +11,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChampionsViewComponent implements OnInit {
 
-  constructor(private championsService: ChampionService) { }
+  constructor(private championsService: ChampionService, private route: ActivatedRoute, private router: Router) { }
 
   searchNode: boolean = true
   championList5: Champion[] = []
   championSearchList: Champion[] = []
   getIndex1: number = 0
   getIndex2: number = 10
+  pagina: number = 0
 
   ngOnInit() {
     this.championsService.getChampions(0,10).subscribe(champions => {
       this.championList5 = champions
-      console.log(champions)
       this.pageLength = 162
     })
   }
 
-  pageLength = 0
+  indexPageParam(){
+    this.router.navigate(['/champion'],
+      {queryParams: {'page': this.pageIndex + 1}}
+    )
+  }
+
+  pageLength = 162
   pageSize = 10;
   pageIndex = 0;
   pageSizeOptions1 = [1, 11, 21, 31, 41, 51, 61, 71, 81, 91, 101, 111, 121, 131, 141, 151, 161];
@@ -41,6 +48,8 @@ export class ChampionsViewComponent implements OnInit {
     this.getIndex1 = this.pageSizeOptions1[this.pageIndex]
     this.getIndex2 = this.pageSizeOptions2[this.pageIndex]
 
+    this.indexPageParam()
+
     if(this.searchNode){
       this.championsService.getChampions(this.getIndex1,this.getIndex2).subscribe(champions => {
         this.championList5 = champions
@@ -51,7 +60,7 @@ export class ChampionsViewComponent implements OnInit {
   }
 
   championSearch(event: Event){
-   let target = event.target as HTMLButtonElement
+    let target = event.target as HTMLButtonElement
 
     let inputText = target.value
 
@@ -59,15 +68,14 @@ export class ChampionsViewComponent implements OnInit {
       this.championsService.getChampions(0,10).subscribe(champions => {
         this.championList5 = champions
         this.pageLength = 162
-        console.log('NADA')
         this.searchNode = true
       })
     }else{
+      this.pageIndex = 0
+      this.indexPageParam()
       this.championsService.findChampion(inputText).subscribe(champions => {
-        console.log('COISA')
         this.championSearchList = champions
         this.championList5 = this.championSearchList.slice(0,10)
-        console.log(this.championList5)
         this.pageLength = this.championSearchList.length
         this.searchNode = false
       })
