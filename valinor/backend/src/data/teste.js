@@ -32,44 +32,13 @@ async function createTable(){
    await db.end()
 }
 
-
-
-async function showTable(){
+async function searchTable(name){
    await db.connect()
-   let result
-   result = await db.query("SELECT * FROM champions")
+
+   result = await db.query(`SELECT name,tags FROM champions WHERE name LIKE '${name}%'`)
 
    await db.end()
-   return result.rows
+   return result
 }
 
-async function fatiaTable(id1,id2){
-   await db.connect()
-   let result
-   result = await db.query(`SELECT champ,tags FROM champions WHERE id BETWEEN ${id1} AND ${id2}`)
-
-   await db.end()
-   return result.rows
-}
-
-async function countTable() {
-   await db.connect()
-   let result
-   result = await db.query("SELECT COUNT(*) FROM champions")
-
-   await db.end()
-   return result.rows[0].count
-
-}
-
-countTable().then(res => {
-   return res
-})
-
-if(countTable() !== '162'){
-   console.log('NAO')
-}else{
-   console.log('SIM')
-}
-
-// countTable().then(console.log(dataChampions))
+searchTable('Aa').then(res => console.log(res.rows))

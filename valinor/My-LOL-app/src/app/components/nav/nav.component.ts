@@ -12,20 +12,20 @@ export class NavComponent implements OnInit {
   constructor(private route:ActivatedRoute, private championService: ChampionService) { }
 
   champObject: any = {}
-  skill = 'none'
+  skill: Number = 8
 
 
   ngOnInit(): void {
-    const name: any = this.route.snapshot.paramMap.get('name')
-    // console.log(name)
+    const name = this.route.snapshot.paramMap.get('name')
+    console.log(name)
     this.championService.getChampionDetails(name).subscribe(champ => {
       console.log(champ)
-      // console.log(Object.entries(champ.data)[0][1])
-      // this.champObject = Object.entries(champ.data)[0][1]
+      console.log(Object.entries(champ.data)[0][1])
+      this.champObject = Object.entries(champ.data)[0][1]
     })
   }
 
-  showSkillDescription(event: any){
+  showSkillDescription(event: Number){
     this.skill = event
   }
 

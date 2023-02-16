@@ -1,5 +1,7 @@
+import { Champion } from './champion.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,19 +12,19 @@ export class ChampionService {
 
   BaseUrl = 'http://localhost:3000'
 
-  createDataBase(){
+  createDataBase() {
     return this.http.get(this.BaseUrl)
   }
 
-  getChampions(offset: number, limit: number){
-  return this.http.get<any>(`${this.BaseUrl}/${offset}/${limit}`)
+  getChampions(offset: number, limit: number) {
+    return this.http.get<Champion[]>(`${this.BaseUrl}/${offset}/${limit}`)
   }
 
-  getChampionDetails(name: string){
+  getChampionDetails(name: string | null) {
     return this.http.get<any>(`http://ddragon.leagueoflegends.com/cdn/13.3.1/data/en_US/champion/${name}.json`)
   }
 
-  findChampion(name: string){
-    return this.http.get<any>(`${this.BaseUrl}/${name}`)
+  findChampion(name: string) {
+    return this.http.get<Champion[]>(`${this.BaseUrl}/${name}`)
   }
 }

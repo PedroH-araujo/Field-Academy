@@ -16,6 +16,12 @@ async function createTable(s) {
    console.log('FOI TUDO')
 }
 
+async function searchTable(name){
+   result = await db.query(`SELECT name,tags FROM champions WHERE name LIKE '${name}%'`)
+
+   return result.rows
+}
+
 async function showTable() {
 
    let result
@@ -41,7 +47,6 @@ async function fatiaTable(id1,id2){
 
 //CRIA MINHA DATABASE
 routes.get('/', (req, response) => {
-
    getChampion()
    async function getChampion() {
       const championListFull = await axios.get('http://ddragon.leagueoflegends.com/cdn/13.3.1/data/pt_BR/champion.json')
@@ -68,19 +73,14 @@ routes.get('/:offset/:limit', (req, response) => {
    
 })
 
-
-routes.get('/:name', (req, resp) => {
+//input de busca
+routes.get('/:name', (req, response) => {
    const name = req.params.name
-   getChampion()
-   async function getChampion() {
-      const championListFull = await axios.get('http://ddragon.leagueoflegends.com/cdn/13.3.1/data/pt_BR/champion.json')
-         .then(res => {
-            return res.data
-         })
-      let champList = Object.values(championListFull.data).filter(champ => {
-         return champ.id.includes(name)
-      })
-   }
+   
+   searchTable(name).then(rows => {
+      response.send(rows)
+   })
+
 })
 
 
