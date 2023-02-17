@@ -3,6 +3,7 @@ import { ChampionsViewComponent } from './components/champions-view/champions-vi
 import { NavComponent } from 'src/app/components/nav/nav.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SkinsViewComponent } from './components/skins-view/skins-view.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,9 @@ const routes: Routes = [
   }, {
     path: 'champion',
     component: ChampionsViewComponent
+  }, {
+    path: 'skins',
+    component: SkinsViewComponent
   }
 ];
 

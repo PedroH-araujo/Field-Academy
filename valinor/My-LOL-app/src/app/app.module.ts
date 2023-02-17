@@ -11,7 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatIconModule} from '@angular/material/icon';
 import { HeaderComponent } from './view/header/header.component';
-import { HomeComponent } from './view/home/home.component'
+import { HomeComponent } from './view/home/home.component';
+import { SkinsViewComponent } from './components/skins-view/skins-view.component'
 
 
 
@@ -21,7 +22,8 @@ import { HomeComponent } from './view/home/home.component'
     ChampionsViewComponent,
     NavComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    SkinsViewComponent
   ],
   imports: [
     BrowserModule,

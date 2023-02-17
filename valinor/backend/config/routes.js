@@ -8,8 +8,9 @@ let dataChampions = 'false'
 async function createTable(listChampions) {
 
    const query = "INSERT INTO champions (name,title,tags,passiveImage,passiveName,passiveDescription,spellsID,spellsName,spellsDescription,lore) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)"
+   const querySkins = "INSERT INTO champions (skins) VALUES ($1) WHERE id = 334"
 
-   for (let i = 0; i < listChampions.length; i++) {
+   for (let i = 161; i < listChampions.length; i++) {
       let name = listChampions[i].id
       await getChampionDetails(name)
    }
@@ -21,20 +22,31 @@ async function createTable(listChampions) {
          })
       let champList = Object.values(championListFull.data)
 
-      await db.query(query,
-         [`${champList[0].id}`, `${champList[0].title}`,
-         [champList[0].tags[0], champList[0].tags[1]], `${champList[0].passive.image.full}`,
-         `${champList[0].passive.name}`, `${champList[0].passive.description}`,
-         [champList[0].spells[0].id, champList[0].spells[1].id, champList[0].spells[2].id,
-         champList[0].spells[3].id], [champList[0].spells[0].name, champList[0].spells[1].name, champList[0].spells[2].name, champList[0].spells[3].name],
-         [champList[0].spells[0].description, champList[0].spells[1].description,
-         champList[0].spells[2].description, champList[0].spells[3].description],
-         `${champList[0].lore}`])
-   }
+      let champ = champList[0]
+         async function getSkins(){
+            for (let index = 0; index < champ.skins.length; index++) {
+               await db.query(querySkins, [[champ.skins[index].num]])
+            }
+         }
 
+
+      await db.query(query,
+         [`${champ.id}`, `${champ.title}`,
+         [champ.tags[0], champ.tags[1]], `${champ.passive.image.full}`,
+         `${champ.passive.name}`, `${champ.passive.description}`,
+         [champ.spells[0].id, champ.spells[1].id, champ.spells[2].id,
+         champ.spells[3].id], [champ.spells[0].name, champ.spells[1].name,
+         champ.spells[2].name, champ.spells[3].name],
+         [champ.spells[0].description, champ.spells[1].description,
+         champ.spells[2].description, champ.spells[3].description],
+         `${champ.lore}`]).then(console.log('CRIEI'), getSkins())
+
+      }
+      
 
 }
 
+//Busca um champion
 async function searchTable(name) {
    result = await db.query(`SELECT name,title,tags,passiveImage,passiveName,passiveDescription,
    spellsID,spellsName,spellsDescription,lore FROM champions WHERE name LIKE '${name}%'`)
@@ -42,7 +54,7 @@ async function searchTable(name) {
    return result.rows
 }
 
-
+//Condicional para saber se a base de dados ja foi criada
 async function countTable() {
 
    let result
@@ -51,6 +63,7 @@ async function countTable() {
    return result.rows[0].count
 }
 
+//paginação
 async function paginatorTable(id1, id2) {
    let result
    result = await db.query(`SELECT name,tags FROM champions WHERE id BETWEEN ${id1} AND ${id2}`)
