@@ -16,12 +16,12 @@ export class NavComponent implements OnInit {
     name: '',
     title: '',
     tags: [],
-    passiveImage: '',
-    passiveName: '',
-    passiveDescription: '',
-    spellsID: [],
-    spellsName: [],
-    spellsDescription: [],
+    passiveimage: '',
+    passivename: '',
+    passivedescription: '',
+    spellsid: [],
+    spellsname: [],
+    spellsdescription: [],
     lore: ''
   }
 

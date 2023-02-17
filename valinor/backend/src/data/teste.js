@@ -32,4 +32,19 @@ async function createTable(){
    await db.end()
 }
 
-createTable()
+async function countTable() {
+   await db.connect()
+   let result
+   result = await db.query("SELECT COUNT(*) FROM champions")
+   await db.end()
+   return result.rows[0].count
+}
+
+countTable().then(rows => {
+   console.log(rows)
+   dataChampions = rows
+   if(dataChampions === '162'){
+      console.log('sim')
+   }
+
+})

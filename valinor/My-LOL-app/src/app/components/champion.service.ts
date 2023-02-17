@@ -20,10 +20,6 @@ export class ChampionService {
     return this.http.get<Champion[]>(`${this.BaseUrl}/${offset}/${limit}`)
   }
 
-  getChampionDetails(name: string | null) {
-    return this.http.get<any>(`${this.BaseUrl}/champion/details/${name}`)
-  }
-
   findChampion(name: string | null) {
     return this.http.get<Champion[]>(`${this.BaseUrl}/${name}`)
   }
