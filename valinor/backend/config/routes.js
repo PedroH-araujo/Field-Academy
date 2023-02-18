@@ -50,7 +50,7 @@ async function createTable(listChampions) {
 //Busca um champion
 async function searchTable(name) {
    result = await db.query(`SELECT name,title,tags,passiveImage,passiveName,passiveDescription,
-   spellsID,spellsName,spellsDescription,lore FROM champions WHERE name LIKE '${name}%'`)
+   spellsID,spellsName,spellsDescription,lore,skins,skinsName FROM champions WHERE name LIKE '${name}%'`)
 
    return result.rows
 }
