@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) {
+   }
 
-  ngOnInit(): void {
+
+   ngOnInit(): void {
+    const url = this.router.url
+    if(url.includes('/skins')){
+      this.imgSrcChampion = '../../../assets/images/championDefault.webp'
+      this.imgSrcSkin = '../../../assets/images/skin.webp'
+    }else {
+      this.imgSrcChampion = '../../../assets/images/champion.webp'
+      this.imgSrcSkin = '../../../assets/images/skinDefault.png'
+    }
   }
+
+
+
+  imgSrcChampion = '../../../assets/images/championDefault.webp'
+  imgSrcSkin = '../../../assets/images/skinDefault.png'
 
 }

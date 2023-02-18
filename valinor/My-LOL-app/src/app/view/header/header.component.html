@@ -1,3 +1,13 @@
 <div class="container">
+  <a routerLink="/champion">
+    <img [src]="imgSrcChampion"
+    (mouseenter)="imgSrcChampion = '../../../assets/images/champion.webp'">
+    <span>Campeões</span>
+  </a>
   <a href="https://developer.riotgames.com/"><img src="../../../assets/images/lol-league-of-Legends-logo.png"></a>
+  <a routerLink="/skins">
+    <img id="skin" [src]="imgSrcSkin"
+    (mouseenter)="imgSrcSkin = '../../../assets/images/skin.webp'">
+    <span>Skins</span>
+  </a>
 </div>

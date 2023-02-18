@@ -2,7 +2,7 @@ import { Champion } from './../champion.model';
 import { PageEvent } from '@angular/material';
 import { ChampionService } from './../champion.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-champions-view',
@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ChampionsViewComponent implements OnInit {
 
-  constructor(private championsService: ChampionService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private championsService: ChampionService, private router: Router) { }
 
   searchNode: boolean = true
   championList5: Champion[] = []
