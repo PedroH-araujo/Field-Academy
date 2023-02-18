@@ -11,7 +11,7 @@
     <span class="champName">{{ champ.name }}</span>
     <div class="type">
       <div *ngFor="let type of champ.tags let i = index" class="divTypes type{{i}}">
-        <img *ngIf="type != null" src="../../../assets/{{ type }}_icon.webp" data-toggle="tooltip" title="{{ type }}">
+        <img *ngIf="type != null" src="../../../assets/images/{{ type }}_icon.webp" data-toggle="tooltip" title="{{ type }}">
       </div>
     </div>
   </div>
