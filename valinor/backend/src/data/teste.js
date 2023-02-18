@@ -40,11 +40,18 @@ async function countTable() {
    return result.rows[0].count
 }
 
-countTable().then(rows => {
-   console.log(rows)
-   dataChampions = rows
-   if(dataChampions === '162'){
-      console.log('sim')
-   }
+// countTable().then(rows => {
+//    console.log(rows)
+//    dataChampions = rows
+//    if(dataChampions === '162'){
+//       console.log('sim')
+//    }
 
-})
+// })
+
+
+   var a = "Battle Boss BelVeth";
+   var b = a.replace(/'/g, '');
+   console.log(b);
+
+

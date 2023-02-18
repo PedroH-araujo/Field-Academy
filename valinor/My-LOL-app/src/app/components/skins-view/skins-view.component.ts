@@ -21,23 +21,28 @@ export class SkinsViewComponent implements OnInit {
   pagina: number = 0
 
   ngOnInit() {
-    this.championsService.getChampions(0,10).subscribe(champions => {
+    this.championsService.getChampions(0, 1).subscribe(champions => {
       this.championList5 = champions
       this.pageLength = 162
+      console.log(champions[0])
     })
+    for (let i = 1; i < 162; i++) {
+      this.pageSizeOptions1.push(i)
+    }
+    console.log(this.pageSizeOptions1)
   }
 
-  indexPageParam(){
+  indexPageParam() {
     this.router.navigate(['/skins'],
-      {queryParams: {'page': this.pageIndex + 1}}
+      { queryParams: { 'page': this.pageIndex + 1 } }
     )
   }
 
   pageLength = 162
-  pageSize = 10;
+  pageSize = 1;
   pageIndex = 0;
-  pageSizeOptions1 = [1, 11, 21, 31, 41, 51, 61, 71, 81, 91, 101, 111, 121, 131, 141, 151, 161];
-  pageSizeOptions2 = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 162];
+
+  pageSizeOptions1: number[] = [];
 
   pageEvent: PageEvent = new PageEvent;
 
@@ -46,36 +51,37 @@ export class SkinsViewComponent implements OnInit {
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
     this.getIndex1 = this.pageSizeOptions1[this.pageIndex]
-    this.getIndex2 = this.pageSizeOptions2[this.pageIndex]
 
     this.indexPageParam()
 
-    if(this.searchNode){
-      this.championsService.getChampions(this.getIndex1,this.getIndex2).subscribe(champions => {
+    if (this.searchNode) {
+      this.championsService.getChampions(this.getIndex1, this.getIndex1).subscribe(champions => {
         this.championList5 = champions
+        console.log(champions)
+        console.log(this.getIndex1)
       })
     } else {
-      this.championList5 = this.championSearchList.slice(this.getIndex1 - 1,this.getIndex2)
+      this.championList5 = this.championSearchList.slice(this.getIndex1 - 1, this.getIndex2)
     }
   }
 
-  championSearch(event: Event){
+  championSearch(event: Event) {
     let target = event.target as HTMLButtonElement
 
     let inputText = target.value
 
-    if(inputText == ''){
-      this.championsService.getChampions(0,10).subscribe(champions => {
+    if (inputText == '') {
+      this.championsService.getChampions(0, 10).subscribe(champions => {
         this.championList5 = champions
         this.pageLength = 162
         this.searchNode = true
       })
-    }else{
+    } else {
       this.pageIndex = 0
       this.indexPageParam()
       this.championsService.findChampion(inputText).subscribe(champions => {
         this.championSearchList = champions
-        this.championList5 = this.championSearchList.slice(0,10)
+        this.championList5 = this.championSearchList.slice(0, 10)
         this.pageLength = this.championSearchList.length
         this.searchNode = false
       })

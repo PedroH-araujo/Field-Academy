@@ -8,9 +8,8 @@ let dataChampions = 'false'
 async function createTable(listChampions) {
 
    const query = "INSERT INTO champions (name,title,tags,passiveImage,passiveName,passiveDescription,spellsID,spellsName,spellsDescription,lore) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)"
-   const querySkins = "INSERT INTO champions (skins) VALUES ($1) WHERE id = 334"
 
-   for (let i = 161; i < listChampions.length; i++) {
+   for (let i = 0; i < listChampions.length; i++) {
       let name = listChampions[i].id
       await getChampionDetails(name)
    }
@@ -25,7 +24,10 @@ async function createTable(listChampions) {
       let champ = champList[0]
          async function getSkins(){
             for (let index = 0; index < champ.skins.length; index++) {
-               await db.query(querySkins, [[champ.skins[index].num]])
+               await db.query(`UPDATE champions SET skins[${index}] = '${champ.skins[index].num}' WHERE name = '${champ.id}'`)
+               //Alguns nomes vem com ' como Battle Boss Bel'Veth
+               let skinName = champ.skins[index].name.replace(/'/g, '')
+               await db.query(`UPDATE champions SET skinsName[${index}] = '${skinName}' WHERE name = '${champ.id}'`)
             }
          }
 
@@ -39,8 +41,7 @@ async function createTable(listChampions) {
          champ.spells[2].name, champ.spells[3].name],
          [champ.spells[0].description, champ.spells[1].description,
          champ.spells[2].description, champ.spells[3].description],
-         `${champ.lore}`]).then(console.log('CRIEI'), getSkins())
-
+         `${champ.lore}`]).then(getSkins())
       }
       
 
@@ -66,7 +67,7 @@ async function countTable() {
 //paginação
 async function paginatorTable(id1, id2) {
    let result
-   result = await db.query(`SELECT name,tags FROM champions WHERE id BETWEEN ${id1} AND ${id2}`)
+   result = await db.query(`SELECT name,tags,skins,skinsName FROM champions WHERE id BETWEEN ${id1} AND ${id2}`)
 
    return result.rows
 }

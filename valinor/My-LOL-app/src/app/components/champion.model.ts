@@ -8,5 +8,7 @@ export interface Champion {
   spellsid: string[],
   spellsname: string[],
   spellsdescription: string[],
-  lore: string
+  lore: string,
+  skins: string[],
+  skinsname: string[]
 }

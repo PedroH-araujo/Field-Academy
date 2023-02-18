@@ -22,7 +22,9 @@ export class NavComponent implements OnInit {
     spellsid: [],
     spellsname: [],
     spellsdescription: [],
-    lore: ''
+    lore: '',
+    skins: [],
+    skinsname: []
   }
 
   skill: Number = 8
