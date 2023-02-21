@@ -20,7 +20,7 @@ export class ChampionsViewComponent implements OnInit {
   getIndex2: number = 10
   pagina: number = 0
 
-  ngOnInit() {
+  public ngOnInit() {
     this.championsService.getChampions(0,10).subscribe(champions => {
       this.championList5 = champions
       this.pageLength = 162

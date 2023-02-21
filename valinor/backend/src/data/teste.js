@@ -18,19 +18,18 @@ async function createTable(){
    //    id serial PRIMARY KEY,
    //    nome VARCHAR (20) UNIQUE NOT NULL
    // )`)
-
-   const query = "INSERT INTO champions (name,tags) VALUES ($1,$2)"
-
-   for (let i = 0; i < s.length; i++) {
-      let name = s[i].id
-      console.log(name)
+   let result = await db.query('Select * From champions')
+   if(Array.from(result.rows) == []){
+      console.log('SIM')
+   }else{
+      console.log('NAO')
    }
-
-   result = await db.query("SELECT * FROM champions")
-
+   console.log(result.rows)
 
    await db.end()
 }
+
+createTable()
 
 async function countTable() {
    await db.connect()
@@ -50,8 +49,5 @@ async function countTable() {
 // })
 
 
-   var a = "Battle Boss BelVeth";
-   var b = a.replace(/'/g, '');
-   console.log(b);
 
 
