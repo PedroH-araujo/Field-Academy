@@ -6,6 +6,32 @@ let dataChampions = '0'
 
 //Conditional if Database has been created
 async function countTable() {
+   let checkTableChampions = Boolean
+   try {
+      await db.query('Select * From champions')
+      checkTableChampions = true
+   } catch (error) {
+      checkTableChampions = false
+   }
+
+   if(!checkTableChampions){
+      await db.query(`CREATE TABLE Champions(
+         id serial NOT NULL PRIMARY KEY,
+         name varchar,
+         title varchar,
+         tags varchar[] NOT NULL,
+         passiveImage varchar,
+         passiveName varchar,
+         passiveDescription varchar,
+         spellsID varchar[],
+         spellsName varchar[],
+         spellsDescription varchar[],
+         lore varchar,
+         skins varchar[],
+         skinsName varchar[]
+         )`)
+   }
+
    let result
    result = await db.query("SELECT COUNT(*) FROM champions")
 

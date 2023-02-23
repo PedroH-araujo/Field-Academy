@@ -18,13 +18,37 @@ async function createTable(){
    //    id serial PRIMARY KEY,
    //    nome VARCHAR (20) UNIQUE NOT NULL
    // )`)
-   let result = await db.query('Select * From champions')
-   if(Array.from(result.rows) == []){
-      console.log('SIM')
-   }else{
-      console.log('NAO')
+   try {
+      await db.query('Select * From champions')
+      dataChampions = true
+   } catch (error) {
+      console.log('ERRO')
+      dataChampions = false
    }
-   console.log(result.rows)
+
+   if(!dataChampions){
+      await db.query(`CREATE TABLE Champions(
+         id serial NOT NULL PRIMARY KEY,
+         name varchar,
+         title varchar,
+         tags varchar[] NOT NULL,
+         passiveImage varchar,
+         passiveName varchar,
+         passiveDescription varchar,
+         spellsID varchar[],
+         spellsName varchar[],
+         spellsDescription varchar[],
+         lore varchar,
+         skins varchar[],
+         skinsName varchar[]
+         )`)
+   }
+   // if(Array.from(result.rows) == []){
+   //    console.log('SIM')
+   // }else{
+   //    console.log('NAO')
+   // }
+   // console.log(result.rows)
 
    await db.end()
 }
@@ -32,11 +56,15 @@ async function createTable(){
 createTable()
 
 async function countTable() {
-   await db.connect()
-   let result
-   result = await db.query("SELECT COUNT(*) FROM champions")
+
+      db.connect().then(console.log('Conect'))
+      .catch(console.error('Nao conect'))
+
+
+
+
    await db.end()
-   return result.rows[0].count
+
 }
 
 // countTable().then(rows => {
