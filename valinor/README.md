@@ -50,7 +50,7 @@ Após clicar no campeão desejado podemos visualizar sua passiva, todas suas hab
 
 <h2 id="skins">Visualizar skins</h2>
 Após clicar no icone de skins somos direcionados para uma pagina que contem todas as skins de todos os campeões, a paginação faz com que a cada página tenhamos todas as skins de apenas um campeão, e nela tambem podemos buscar algum campeão específico.
-<img src="./img/skins.gif">
+<img src="./img/MyLOLApp - Opera 2023-02-25 14-06-08 (1).gif">
 
 <h1 id="tecnologias">Tecnologias</h1>
  <h2 id="front">Front end</h2>
