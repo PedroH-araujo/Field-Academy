@@ -5,9 +5,9 @@
 ### Tópicos
 
 - [Descrição do projeto](#descrição)
-- [Status do projeto](#status)
 - [API Utilizada](#api)
-- [Inspirações](#inspiracao)
+- [Funcionalidades](#funcionalidades)
+- [Ideia para o projeto](#inspiracao)
 - [Telas](#telas)
 - [Tecnologias](#tecnologias)
     - [Jest](#jest)
@@ -19,4 +19,12 @@
  
  <!--te-->
  
- <h1 #id="descrição">Descrição do projeto</h1>
+<h1 id="descrição">Descrição do projeto</h1>
+Este projeto consiste em mostrar todos os campeões do jogo League of Legends, assim como suas habilidades, sua história e todas as suas skins.
+
+<h1 id="api">API utilizada</h1>
+Neste projeto eu utilizei a API da [https://developer.riotgames.com](Riot Games) para ter acesso aos campeões e seus detalhes.
+
+<h1 id="funcionalidades">Funcionalidades</h1>
+Nesta pagina podemos visualizar os campeões e suas especialidades
+![Imagem dos Campeões](img/View-Campeoes.png)
