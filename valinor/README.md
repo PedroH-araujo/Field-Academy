@@ -8,12 +8,13 @@
    <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white">
    <img src="https://img.shields.io/badge/Railway-131415?style=for-the-badge&logo=railway&logoColor=white">
 </div>
-<!--ts-->
+
 
 ### Tópicos
 
 - [Descrição do projeto](#descrição)
 - [API Utilizada](#api)
+- [Iniciar o projeto](#iniciar)
 - [Funcionalidades](#funcionalidades)
    - [Visualizar campeões](#visualizar)
    - [Buscar campeões](#busca)
@@ -28,14 +29,19 @@
  - [Melhorias a serem feitas](#melhorias)
  - [Sobre](#sobre)
  - [Contato](#contato)
- 
- <!--te-->
+
  
 <h1 id="descrição">Descrição do projeto</h1>
 Este projeto consiste em mostrar todos os campeões do jogo League of Legends, assim como suas habilidades, sua história e todas as suas skins.
 
 <h1 id="api">API utilizada</h1>
 Neste projeto eu utilizei a API da <a href="https://developer.riotgames.com">Riot Games</a> para ter acesso aos campeões e seus detalhes.
+
+#<h1 id="iniciar">Iniciar o projeto</h1>
+Faça o download do projeto, depois de esse comando dentro da pasta backend e da pasta My-LOL-app
+```
+npm install
+```
 
 <h1 id="funcionalidades">Funcionalidades</h1>
 <h2 id="visualizar">Visualizar campeões</h2>
@@ -85,4 +91,13 @@ Também estou aprofundando meus conhecimentos em Angular pois sei que esse frame
 <p>Minha idéia é expandir esse projeto para englobar outros coisas do jogo como itens, feitiços,runas e também implementar uma versão mobile para facilitar a pequisa</p>
 
 <h1 id="sobre">Sobre mim</h1>
-<p>Meu nome é Pedro Henrique, tenho 25 anos, estou atualmente cursando o segundo semestre em Análise e desenvolvimento de sistemas na FATEC de São José do Rio Preto</p>
+<p>Meu nome é Pedro Henrique, tenho 25 anos, estou atualmente cursando o segundo semestre em Análise e desenvolvimento de sistemas na FATEC de São José do Rio Preto,ao entrar na faculdade eu entrei de cabeça direto no mundo de desenvolvimento web, pois queria fazer algo e conseguir ver com facilidade o que estava fazendo e poder mostrar para outras pessoas.</p>
+<p>Por conversas na faculdade com professores e alunos eu conheci os videos do professor Guanabara e com eles comecei a desenvolver, depois de alguns meses consegui entrar no programa ONE que é uma parceria da Alura com a Oracle e consegui acesso na plataforma Alura, fiz diversos cursos na Alura, também fiz alguns cursos da Udemy e DIO e até fiz alguns projetos pessoais.</p>
+<p>E então veio o Field Academy, ele foi e esta sendo um divisor na minha carreira, sentar com as pessoas, discutir sobre os códigos, poder falar sobre programação e tirar dúvidas tem sido muito bom para o meu desenvolvimento, eu acredito que consegui evoluir muito e espero continuar evoluindo.</p>
+
+<h1 id="contato">Contato</h1>
+   <div>
+     <a href = "https://web.whatsapp.com/send?phone=5567999001114"><img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" target="_blank"></a>
+      <a href="https://www.linkedin.com/in/pedro-henrique-678618218/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
+     <a href = "mailto:pedrohva.pba@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank">        </a>
+   </div>
