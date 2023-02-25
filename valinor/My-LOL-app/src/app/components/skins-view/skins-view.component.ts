@@ -14,7 +14,7 @@ export class SkinsViewComponent implements OnInit {
   constructor(private championsService: ChampionService, private route: ActivatedRoute, private router: Router) { }
 
   searchNode: boolean = true
-  championList5: Champion[] = []
+  championList: Champion[] = []
   championSearchList: Champion[] = []
   getIndex1: number = 0
   getIndex2: number = 10
@@ -22,7 +22,7 @@ export class SkinsViewComponent implements OnInit {
 
   ngOnInit() {
     this.championsService.getChampions(0, 1).subscribe(champions => {
-      this.championList5 = champions
+      this.championList = champions
       this.pageLength = 162
       console.log(champions[0])
     })
@@ -54,13 +54,13 @@ export class SkinsViewComponent implements OnInit {
 
     if (this.searchNode) {
       this.championsService.getChampions(this.getIndex1, this.getIndex1).subscribe(champions => {
-        this.championList5 = champions
+        this.championList = champions
         console.log(champions)
         console.log(this.getIndex1)
       })
     } else {
-      this.championList5 = this.championSearchList.slice(this.getIndex1 - 1, this.getIndex1)
-      console.log(this.championList5)
+      this.championList = this.championSearchList.slice(this.getIndex1 - 1, this.getIndex1)
+      console.log(this.championList)
     }
   }
 
@@ -71,7 +71,7 @@ export class SkinsViewComponent implements OnInit {
 
     if (inputText == '') {
       this.championsService.getChampions(0, 1).subscribe(champions => {
-        this.championList5 = champions
+        this.championList = champions
         this.pageLength = 162
         this.searchNode = true
         this.pageIndex = 0
@@ -82,7 +82,7 @@ export class SkinsViewComponent implements OnInit {
       this.championsService.findChampion(inputText).subscribe(champions => {
         this.championSearchList = champions
         console.log(champions)
-        this.championList5 = this.championSearchList.slice(0, 1)
+        this.championList = this.championSearchList.slice(0, 1)
         this.pageLength = this.championSearchList.length
         this.searchNode = false
       })

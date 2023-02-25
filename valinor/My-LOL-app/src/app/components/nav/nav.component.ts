@@ -32,9 +32,7 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     const name = this.route.snapshot.paramMap.get('name')
-    console.log(name)
     this.championService.findChampion(name).subscribe(champ => {
-      console.log(champ[0])
       this.champObject = champ[0]
     })
   }

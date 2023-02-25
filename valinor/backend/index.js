@@ -21,7 +21,6 @@ app.use(routes)
 
 app.listen(3000, () => {
    db.connect()
-   console.log('começou a escutar...')
    console.log('http://localhost:3000')
 })
 

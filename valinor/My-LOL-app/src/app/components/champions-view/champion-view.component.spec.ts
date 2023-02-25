@@ -1,12 +1,12 @@
-import { ChampionService } from './../champion.service';
+import { ActivatedRoute } from '@angular/router';
 import { AppModule } from './../../app.module';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ChampionsViewComponent } from './champions-view.component';
 
-fdescribe(ChampionsViewComponent.name, () => {
+describe(ChampionsViewComponent.name, () => {
   let fixture: ComponentFixture<ChampionsViewComponent>
   let component: ChampionsViewComponent
-  let championService: ChampionService
+  let route: ActivatedRoute
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -24,6 +24,9 @@ fdescribe(ChampionsViewComponent.name, () => {
 
   it('Should increment the page index in URL', () => {
     fixture.detectChanges()
+    component.page = '1'
+    component.indexPageParam()
+    expect(component.page).toBe('2')
   })
 
 })

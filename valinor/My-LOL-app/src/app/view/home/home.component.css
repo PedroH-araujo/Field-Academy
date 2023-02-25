@@ -1,12 +1,29 @@
 .container{
   display: flex;
   flex-direction: column;
-  margin: auto;
-  width: 800px;
-  height: 800px;
-  background-color: aliceblue;
+  justify-content: center;
+  align-items: center;
+  margin: 500px 0;
+  background-color: rgba(0, 0, 0, 0.631);
+  border-radius: 10px;
+}
+
+h1{
+  color: #885d06;
 }
 
 .container > a > img{
-  width: 200px;
+  width: 270px;
+}
+
+.frontend{
+  color: rgba(255, 0, 0, 0.738);
+}
+
+.backend{
+  color: green;
+}
+
+.database{
+  color: blue;
 }

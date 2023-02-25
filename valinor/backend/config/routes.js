@@ -2,35 +2,30 @@ const express = require('express')
 const axios = require('axios')
 const routes = express.Router()
 const db = require('../src/data/arquivo')
-let dataChampions = '0'
+
 
 //Conditional if Database has been created
 async function countTable() {
-   let checkTableChampions = Boolean
    try {
       await db.query('Select * From champions')
-      checkTableChampions = true
    } catch (error) {
-      checkTableChampions = false
-   }
-
-   if(!checkTableChampions){
       await db.query(`CREATE TABLE Champions(
          id serial NOT NULL PRIMARY KEY,
-         name varchar,
-         title varchar,
+         name varchar NOT NULL,
+         title varchar NOT NULL,
          tags varchar[] NOT NULL,
-         passiveImage varchar,
-         passiveName varchar,
-         passiveDescription varchar,
-         spellsID varchar[],
-         spellsName varchar[],
-         spellsDescription varchar[],
-         lore varchar,
+         passiveImage varchar NOT NULL,
+         passiveName varchar NOT NULL,
+         passiveDescription varchar NOT NULL,
+         spellsID varchar[] NOT NULL,
+         spellsName varchar[] NOT NULL,
+         spellsDescription varchar[] NOT NULL,
+         lore varchar NOT NULL,
          skins varchar[],
          skinsName varchar[]
          )`)
    }
+
 
    let result
    result = await db.query("SELECT COUNT(*) FROM champions")
@@ -46,11 +41,11 @@ routes.get('/', (req, response) => {
             return res.data
          })
       let champList = Object.values(championListFull.data)
-      dataChampions = await countTable()
+      let dataChampions = await countTable()
       if (dataChampions !== '162') {
          createTable(champList)
          response.json('Database created')
-      }else{
+      } else {
          response.json('Database already exists')
       }
    }

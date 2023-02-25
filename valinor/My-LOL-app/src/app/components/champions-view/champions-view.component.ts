@@ -2,7 +2,7 @@ import { Champion } from './../champion.model';
 import { PageEvent } from '@angular/material';
 import { ChampionService } from './../champion.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-champions-view',
@@ -11,20 +11,22 @@ import { Router } from '@angular/router';
 })
 export class ChampionsViewComponent implements OnInit {
 
-  constructor(private championsService: ChampionService, private router: Router) { }
+  constructor(private championsService: ChampionService, private router: Router, private route: ActivatedRoute) { }
 
   searchNode: boolean = true
   championList5: Champion[] = []
   championSearchList: Champion[] = []
   getIndex1: number = 0
   getIndex2: number = 10
-  pagina: number = 0
+  page = this.route.snapshot.queryParamMap.get('page')
 
   public ngOnInit() {
     this.championsService.getChampions(0,10).subscribe(champions => {
       this.championList5 = champions
       this.pageLength = 162
     })
+    this.indexPageParam()
+    console.log(this.page)
   }
 
   indexPageParam(){
@@ -41,10 +43,10 @@ export class ChampionsViewComponent implements OnInit {
 
   pageEvent: PageEvent = new PageEvent;
 
-  handlePageEvent(e: PageEvent) {
-    this.pageEvent = e;
-    this.pageSize = e.pageSize;
-    this.pageIndex = e.pageIndex;
+  handlePageEvent(event: PageEvent) {
+    this.pageEvent = event;
+    this.pageSize = event.pageSize;
+    this.pageIndex = event.pageIndex;
     this.getIndex1 = this.pageSizeOptions1[this.pageIndex]
     this.getIndex2 = this.pageSizeOptions2[this.pageIndex]
 
@@ -61,9 +63,7 @@ export class ChampionsViewComponent implements OnInit {
 
   championSearch(event: Event){
     let target = event.target as HTMLButtonElement
-
     let inputText = target.value
-
     if(inputText == ''){
       this.championsService.getChampions(0,10).subscribe(champions => {
         this.championList5 = champions
