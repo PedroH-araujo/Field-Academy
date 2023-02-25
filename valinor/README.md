@@ -39,3 +39,5 @@ Nete campo podemos buscar o campeão pelo nome e mostrar
 
 <h2 id="busca">Visualizar detalhes do campeão</h2>
 Após clicar no campeão desejado podemos visualizar sua passiva, todas suas habilidades e sua história.
+![MyLOLApp-Opera-2023-02-25-13-18-53](https://user-images.githubusercontent.com/112811075/221368252-77c8c83d-9819-4dee-8e40-dff69c0dc1a3.gif)
+
