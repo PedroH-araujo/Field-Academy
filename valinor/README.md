@@ -1,11 +1,13 @@
 # Projeto Liga das Lendas
-<img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white">
-<img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white">
-<img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
-<img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">
-<img src="https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white">
-<img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white">
-<img src="https://img.shields.io/badge/Railway-131415?style=for-the-badge&logo=railway&logoColor=white">
+<div>
+   <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white">
+   <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white">
+   <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">
+   <img src="https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white">
+   <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white">
+   <img src="https://img.shields.io/badge/Railway-131415?style=for-the-badge&logo=railway&logoColor=white">
+</div>
 <!--ts-->
 
 ### Tópicos
@@ -50,7 +52,7 @@ Após clicar no campeão desejado podemos visualizar sua passiva, todas suas hab
 
 <h2 id="skins">Visualizar skins</h2>
 Após clicar no icone de skins somos direcionados para uma pagina que contem todas as skins de todos os campeões, a paginação faz com que a cada página tenhamos todas as skins de apenas um campeão, e nela tambem podemos buscar algum campeão específico.
-<img src="./img/MyLOLApp - Opera 2023-02-25 14-06-08 (1).gif">
+<img width="1000px" src="./img/MyLOLApp - Opera 2023-02-25 14-06-08 (1).gif">
 
 <h1 id="tecnologias">Tecnologias</h1>
  <h2 id="front">Front end</h2>
