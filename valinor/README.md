@@ -67,7 +67,7 @@ Após clicar no campeão desejado podemos visualizar sua passiva, todas suas hab
 
 <h2 id="skins">Visualizar skins</h2>
 Após clicar no icone de skins somos direcionados para uma pagina que contem todas as skins de todos os campeões, a paginação faz com que a cada página tenhamos todas as skins de apenas um campeão, e nela tambem podemos buscar algum campeão específico.
-<img width="1000px" src="./img/kin.gif">
+<img width="1000px" src="./img/skins.gif">
 
 <h1 id="tecnologias">Tecnologias</h1>
  <h2 id="front">Front end</h2>
@@ -97,7 +97,7 @@ Outro desafio foi que a url onde pego as informações dos campeões continha o 
 <h1 id="melhorias">Melhorias a serem feitas</h1>
 <p>Eu implementei testes no back end utilizando JEST, mas foi minha primeira vez fazendo testes, estou aprofundando meus estudos em testes para conseguir ter uma cobertura de 100% em testes.
 Também estou aprofundando meus conhecimentos em Angular pois sei que esse framework tem muitas possibilidades que ainda são desconhecidas pra mim.</p>
-<p>Minha idéia é expandir esse projeto para englobar outros coisas do jogo como itens, feitiços,runas e também implementar uma versão mobile para facilitar a pequisa</p>
+<p>Minha idéia é expandir esse projeto para englobar outros coisas do jogo como itens, feitiços,runas e também implementar uma versão mobile para facilitar a pequisa.</p>
 
 <h1 id="sobre">Sobre mim</h1>
 <p>Meu nome é Pedro Henrique, tenho 25 anos, estou atualmente cursando o segundo semestre em Análise e desenvolvimento de sistemas na FATEC de São José do Rio Preto,ao entrar na faculdade eu entrei de cabeça direto no mundo de desenvolvimento web, pois queria fazer algo e conseguir ver com facilidade o que estava fazendo e poder mostrar para outras pessoas.</p>
