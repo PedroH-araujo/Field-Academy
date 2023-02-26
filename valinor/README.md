@@ -38,11 +38,20 @@ Este projeto consiste em mostrar todos os campeões do jogo League of Legends, a
 Neste projeto eu utilizei a API da <a href="https://developer.riotgames.com">Riot Games</a> para ter acesso aos campeões e seus detalhes.
 
 #<h1 id="iniciar">Iniciar o projeto</h1>
-Faça o download do projeto, depois de esse comando dentro da pasta backend e da pasta My-LOL-app
+ - Faça o download do projeto
+ - Abra um terminal na pasta backend e outro na pasta My-LOL-app
+ - Instale as dependências do projeto utilizando este comando em cada terminal
 ```
 npm install
 ```
-
+ - Utilize esse comando para inicar o projeto
+ ```
+ npm start
+ ```
+ - Abra seu navegador neste endereço
+ ```
+ http://localhost:4200
+ ````
 <h1 id="funcionalidades">Funcionalidades</h1>
 <h2 id="visualizar">Visualizar campeões</h2>
 Nesta pagina podemos visualizar os campeões e suas especialidades com paginação de 10 campeões por página.
