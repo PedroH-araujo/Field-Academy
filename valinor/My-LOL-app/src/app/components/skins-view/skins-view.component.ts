@@ -24,7 +24,6 @@ export class SkinsViewComponent implements OnInit {
     this.championsService.getChampions(0, 1).subscribe(champions => {
       this.championList = champions
       this.pageLength = 162
-      console.log(champions[0])
     })
     for (let i = 1; i <= 162; i++) {
       this.pageSizeOptions1.push(i)
@@ -55,12 +54,9 @@ export class SkinsViewComponent implements OnInit {
     if (this.searchNode) {
       this.championsService.getChampions(this.getIndex1, this.getIndex1).subscribe(champions => {
         this.championList = champions
-        console.log(champions)
-        console.log(this.getIndex1)
       })
     } else {
       this.championList = this.championSearchList.slice(this.getIndex1 - 1, this.getIndex1)
-      console.log(this.championList)
     }
   }
 
@@ -81,7 +77,6 @@ export class SkinsViewComponent implements OnInit {
       this.indexPageParam()
       this.championsService.findChampion(inputText).subscribe(champions => {
         this.championSearchList = champions
-        console.log(champions)
         this.championList = this.championSearchList.slice(0, 1)
         this.pageLength = this.championSearchList.length
         this.searchNode = false

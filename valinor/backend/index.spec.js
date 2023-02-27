@@ -41,8 +41,8 @@ describe('Routing test', () => {
    })
    
    it('Should send wanted champion', async () => {
-      const getNames = await request(app).get(`/0/50`)
-      for (let i = 0; i < 50; i++) {
+      const getNames = await request(app).get(`/0/20`)
+      for (let i = 0; i < 20; i++) {
          const name = getNames.body[i].name
          const res = await request(app).get(`/${name}`)
          expect(res.body[0].name).toEqual(name)

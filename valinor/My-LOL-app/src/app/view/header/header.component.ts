@@ -11,10 +11,9 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router) {
    }
 
-
    ngOnInit(): void {
     const url = this.router.url
-    if(url.includes('/skins')){
+    if(url.includes('/skins')) {
       this.imgSrcChampion = '../../../assets/images/championDefault.webp'
       this.imgSrcSkin = '../../../assets/images/skin.webp'
     }else {
@@ -23,9 +22,6 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-
-
   imgSrcChampion = '../../../assets/images/championDefault.webp'
   imgSrcSkin = '../../../assets/images/skinDefault.png'
-
 }

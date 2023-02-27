@@ -3,7 +3,7 @@
   <mat-paginator (page)="handlePageEvent($event)" [length]="pageLength" [pageSizeOptions]="[10]" [pageIndex]="pageIndex"
     aria-label="Select page">
   </mat-paginator>
-  <input class="search" type="text" (input)="championSearch($event)" placeholder="Search">
+  <input class="search" type="text" (input)="championSearch($event)" placeholder="Pesquisa">
 </div>
 <div class="container">
   <div class="champion" *ngFor="let champ of championList5">
