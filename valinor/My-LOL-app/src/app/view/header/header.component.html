@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="url == '/champion' || url == '/skins'">
   <a routerLink="/champion">
     <img [src]="imgSrcChampion">
     <span>Campeões</span>

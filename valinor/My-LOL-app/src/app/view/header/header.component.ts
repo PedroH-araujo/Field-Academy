@@ -12,14 +12,20 @@ export class HeaderComponent implements OnInit {
    }
 
    ngOnInit(): void {
-    const url = this.router.url
-    if(url.includes('/skins')) {
+  }
+
+  public url:string | undefined
+
+  ngAfterContentChecked(): void {
+    this.url = this.router.url
+    if(this.url.includes('/skins')) {
       this.imgSrcChampion = '../../../assets/images/championDefault.webp'
       this.imgSrcSkin = '../../../assets/images/skin.webp'
     }else {
       this.imgSrcChampion = '../../../assets/images/champion.webp'
       this.imgSrcSkin = '../../../assets/images/skinDefault.png'
     }
+    console.log(this.url == '/champion')
   }
 
   imgSrcChampion = '../../../assets/images/championDefault.webp'

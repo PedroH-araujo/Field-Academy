@@ -11,28 +11,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ChampionsViewComponent implements OnInit {
 
-  constructor(private championsService: ChampionService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private championsService: ChampionService) { }
 
   searchNode: boolean = true
-  championList5: Champion[] = []
+  championList: Champion[] = []
   championSearchList: Champion[] = []
   getIndex1: number = 0
   getIndex2: number = 10
-  page = this.route.snapshot.queryParamMap.get('page')
 
   public ngOnInit() {
     this.championsService.getChampions(0,10).subscribe(champions => {
-      this.championList5 = champions
+      this.championList = champions
       this.pageLength = 162
     })
-    this.indexPageParam()
-    console.log(this.page)
-  }
-
-  indexPageParam(){
-    this.router.navigate(['/champion'],
-      {queryParams: {'page': this.pageIndex + 1}}
-    )
   }
 
   pageLength = 162
@@ -50,14 +41,12 @@ export class ChampionsViewComponent implements OnInit {
     this.getIndex1 = this.pageSizeOptions1[this.pageIndex]
     this.getIndex2 = this.pageSizeOptions2[this.pageIndex]
 
-    this.indexPageParam()
-
     if(this.searchNode){
       this.championsService.getChampions(this.getIndex1,this.getIndex2).subscribe(champions => {
-        this.championList5 = champions
+        this.championList = champions
       })
     } else {
-      this.championList5 = this.championSearchList.slice(this.getIndex1 - 1,this.getIndex2)
+      this.championList = this.championSearchList.slice(this.getIndex1 - 1,this.getIndex2)
     }
   }
 
@@ -66,16 +55,15 @@ export class ChampionsViewComponent implements OnInit {
     let inputText = target.value
     if(inputText == ''){
       this.championsService.getChampions(0,10).subscribe(champions => {
-        this.championList5 = champions
+        this.championList = champions
         this.pageLength = 162
         this.searchNode = true
       })
     }else{
       this.pageIndex = 0
-      this.indexPageParam()
       this.championsService.findChampion(inputText).subscribe(champions => {
         this.championSearchList = champions
-        this.championList5 = this.championSearchList.slice(0,10)
+        this.championList = this.championSearchList.slice(0,10)
         this.pageLength = this.championSearchList.length
         this.searchNode = false
       })

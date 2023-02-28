@@ -11,14 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SkinsViewComponent implements OnInit {
 
-  constructor(private championsService: ChampionService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private championsService: ChampionService) { }
 
   searchNode: boolean = true
   championList: Champion[] = []
   championSearchList: Champion[] = []
   getIndex1: number = 0
   getIndex2: number = 10
-  pagina: number = 0
 
   ngOnInit() {
     this.championsService.getChampions(0, 1).subscribe(champions => {
@@ -28,12 +27,6 @@ export class SkinsViewComponent implements OnInit {
     for (let i = 1; i <= 162; i++) {
       this.pageSizeOptions1.push(i)
     }
-  }
-
-  indexPageParam() {
-    this.router.navigate(['/skins'],
-      { queryParams: { 'page': this.pageIndex + 1 } }
-    )
   }
 
   pageLength = 162
@@ -48,8 +41,6 @@ export class SkinsViewComponent implements OnInit {
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
     this.getIndex1 = this.pageSizeOptions1[this.pageIndex]
-
-    this.indexPageParam()
 
     if (this.searchNode) {
       this.championsService.getChampions(this.getIndex1, this.getIndex1).subscribe(champions => {
@@ -74,7 +65,6 @@ export class SkinsViewComponent implements OnInit {
       })
     } else {
       this.pageIndex = 0
-      this.indexPageParam()
       this.championsService.findChampion(inputText).subscribe(champions => {
         this.championSearchList = champions
         this.championList = this.championSearchList.slice(0, 1)

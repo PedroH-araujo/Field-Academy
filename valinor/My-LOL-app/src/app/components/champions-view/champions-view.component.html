@@ -1,4 +1,4 @@
-<app-header></app-header>
+
 <div class="paginator">
   <mat-paginator (page)="handlePageEvent($event)" [length]="pageLength" [pageSizeOptions]="[10]" [pageIndex]="pageIndex"
     aria-label="Select page">
@@ -6,7 +6,7 @@
   <input class="search" type="text" (input)="championSearch($event)" placeholder="Pesquisa">
 </div>
 <div class="container">
-  <div class="champion" *ngFor="let champ of championList5">
+  <div class="champion" *ngFor="let champ of championList">
     <img routerLink="/champion/{{ champ.name }}"
       src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{ champ.name }}_0.jpg">
     <span class="champName">{{ champ.name }}</span>
