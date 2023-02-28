@@ -1,5 +1,5 @@
-import { Champion } from './../champion.model';
-import { ChampionService } from './../champion.service';
+import { Champion } from '../shared/champion.model';
+import { ChampionService } from '../shared/champion.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class NavComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute, private championService: ChampionService) { }
+  constructor(private route: ActivatedRoute, private championService: ChampionService) { }
 
   champObject: Champion = {
     name: '',
@@ -29,7 +29,6 @@ export class NavComponent implements OnInit {
 
   skill: Number = 8
 
-
   ngOnInit(): void {
     const name = this.route.snapshot.paramMap.get('name')
     this.championService.findChampion(name).subscribe(champ => {
@@ -37,7 +36,7 @@ export class NavComponent implements OnInit {
     })
   }
 
-  showSkillDescription(event: Number){
+  showSkillDescription(event: Number) {
     this.skill = event
   }
 

@@ -9,19 +9,19 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   constructor(private router: Router) {
-   }
-
-   ngOnInit(): void {
   }
 
-  public url:string | undefined
+  ngOnInit(): void {
+  }
+
+  public url: string | undefined
 
   ngAfterContentChecked(): void {
     this.url = this.router.url
-    if(this.url.includes('/skins')) {
+    if (this.url.includes('/skins')) {
       this.imgSrcChampion = '../../../assets/images/championDefault.webp'
       this.imgSrcSkin = '../../../assets/images/skin.webp'
-    }else {
+    } else {
       this.imgSrcChampion = '../../../assets/images/champion.webp'
       this.imgSrcSkin = '../../../assets/images/skinDefault.png'
     }

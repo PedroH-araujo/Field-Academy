@@ -1,4 +1,4 @@
-import { ChampionService } from './../../components/champion.service';
+import { ChampionService } from '../../components/shared/champion.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

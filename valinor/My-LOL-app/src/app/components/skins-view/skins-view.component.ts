@@ -1,7 +1,6 @@
 import { PageEvent } from '@angular/material';
-import { Champion } from './../champion.model';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ChampionService } from './../champion.service';
+import { Champion } from '../shared/champion.model';
+import { ChampionService } from '../shared/champion.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

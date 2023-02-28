@@ -1,8 +1,7 @@
-import { Champion } from './../champion.model';
+import { Champion } from '../shared/champion.model';
 import { PageEvent } from '@angular/material';
-import { ChampionService } from './../champion.service';
+import { ChampionService } from '../shared/champion.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-champions-view',
@@ -20,7 +19,7 @@ export class ChampionsViewComponent implements OnInit {
   getIndex2: number = 10
 
   public ngOnInit() {
-    this.championsService.getChampions(0,10).subscribe(champions => {
+    this.championsService.getChampions(0, 10).subscribe(champions => {
       this.championList = champions
       this.pageLength = 162
     })
@@ -41,29 +40,29 @@ export class ChampionsViewComponent implements OnInit {
     this.getIndex1 = this.pageSizeOptions1[this.pageIndex]
     this.getIndex2 = this.pageSizeOptions2[this.pageIndex]
 
-    if(this.searchNode){
-      this.championsService.getChampions(this.getIndex1,this.getIndex2).subscribe(champions => {
+    if (this.searchNode) {
+      this.championsService.getChampions(this.getIndex1, this.getIndex2).subscribe(champions => {
         this.championList = champions
       })
     } else {
-      this.championList = this.championSearchList.slice(this.getIndex1 - 1,this.getIndex2)
+      this.championList = this.championSearchList.slice(this.getIndex1 - 1, this.getIndex2)
     }
   }
 
-  championSearch(event: Event){
+  championSearch(event: Event) {
     let target = event.target as HTMLButtonElement
     let inputText = target.value
-    if(inputText == ''){
-      this.championsService.getChampions(0,10).subscribe(champions => {
+    if (inputText == '') {
+      this.championsService.getChampions(0, 10).subscribe(champions => {
         this.championList = champions
         this.pageLength = 162
         this.searchNode = true
       })
-    }else{
+    } else {
       this.pageIndex = 0
       this.championsService.findChampion(inputText).subscribe(champions => {
         this.championSearchList = champions
-        this.championList = this.championSearchList.slice(0,10)
+        this.championList = this.championSearchList.slice(0, 10)
         this.pageLength = this.championSearchList.length
         this.searchNode = false
       })
