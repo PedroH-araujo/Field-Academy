@@ -1,9 +1,9 @@
-<app-header></app-header>
+
 <div class="paginator">
   <mat-paginator (page)="handlePageEvent($event)" [length]="pageLength" [pageSizeOptions]="[1]" [pageIndex]="pageIndex"
     aria-label="Select page">
   </mat-paginator>
-  <input class="search" type="text" (input)="championSearch($event)" placeholder="Search">
+  <input class="search" type="text" (input)="championSearch($event)" placeholder="Pesquisa">
 </div>
 <div class="container" *ngFor="let champ of championList">
   <div class="champion" *ngFor="let skinID of champ.skins, let i = index">

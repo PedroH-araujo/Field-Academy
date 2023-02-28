@@ -25,14 +25,7 @@ export class ChampionsViewComponent implements OnInit {
       this.championList5 = champions
       this.pageLength = 162
     })
-    this.indexPageParam()
     console.log(this.page)
-  }
-
-  indexPageParam(){
-    this.router.navigate(['/champion'],
-      {queryParams: {'page': this.pageIndex + 1}}
-    )
   }
 
   pageLength = 162
@@ -49,8 +42,6 @@ export class ChampionsViewComponent implements OnInit {
     this.pageIndex = event.pageIndex;
     this.getIndex1 = this.pageSizeOptions1[this.pageIndex]
     this.getIndex2 = this.pageSizeOptions2[this.pageIndex]
-
-    this.indexPageParam()
 
     if(this.searchNode){
       this.championsService.getChampions(this.getIndex1,this.getIndex2).subscribe(champions => {
@@ -72,7 +63,6 @@ export class ChampionsViewComponent implements OnInit {
       })
     }else{
       this.pageIndex = 0
-      this.indexPageParam()
       this.championsService.findChampion(inputText).subscribe(champions => {
         this.championSearchList = champions
         this.championList5 = this.championSearchList.slice(0,10)

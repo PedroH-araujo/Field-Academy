@@ -1,23 +1,21 @@
 import { HomeComponent } from './view/home/home.component';
-import { ChampionsViewComponent } from './components/champions-view/champions-view.component';
-import { NavComponent } from 'src/app/components/nav/nav.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SkinsViewComponent } from './components/skins-view/skins-view.component';
+
 
 const routes: Routes = [
   {
     path: 'champion/:name',
-    component: NavComponent
+    loadChildren: () => import('./components/nav/module/nav.module').then(m => m.NavModule)
   }, {
     path: '',
     component: HomeComponent
   }, {
     path: 'champion',
-    component: ChampionsViewComponent
+    loadChildren: () => import('./components/champions-view/module/champions.module').then(m => m.ChampionsModule)
   }, {
     path: 'skins',
-    component: SkinsViewComponent
+    loadChildren: () => import('./components/skins-view/module/skins.module').then(m => m.SkinsModule)
   }
 ];
 
