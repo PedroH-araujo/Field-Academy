@@ -9,7 +9,7 @@ const routes: Routes = [
     loadChildren: () => import('./components/nav/module/nav.module').then(m => m.NavModule)
   }, {
     path: '',
-    component: HomeComponent
+    loadChildren: () => import('./view/home/module/home.module').then(m => m.HomeModule)
   }, {
     path: 'champion',
     loadChildren: () => import('./components/champions-view/module/champions.module').then(m => m.ChampionsModule)

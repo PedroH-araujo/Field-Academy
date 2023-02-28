@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SkinsViewComponent implements OnInit {
 
-  constructor(private championsService: ChampionService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private championsService: ChampionService) { }
 
   searchNode: boolean = true
   championList: Champion[] = []

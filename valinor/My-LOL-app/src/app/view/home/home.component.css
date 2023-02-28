@@ -6,10 +6,11 @@
   margin-top: 300px;
   background-color: rgba(0, 0, 0, 0.631);
   border-radius: 10px;
+  text-align: center;
 }
 
 h1{
-  color: #885d06;
+  color: black;
 }
 
 .container > a > img{
