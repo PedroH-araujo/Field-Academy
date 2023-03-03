@@ -2,6 +2,7 @@ import { Champion } from '../shared/champion.model';
 import { PageEvent } from '@angular/material';
 import { ChampionService } from '../shared/champion.service';
 import { Component, OnInit} from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-champions-view',
@@ -12,6 +13,7 @@ export class ChampionsViewComponent implements OnInit {
 
   constructor(private championsService: ChampionService) { }
 
+  searchText = new FormControl('')
   searchNode: boolean = true
   championList: Champion[] = []
   championSearchList: Champion[] = []
@@ -49,23 +51,22 @@ export class ChampionsViewComponent implements OnInit {
     }
   }
 
-  championSearch(event: Event) {
-    let target = event.target as HTMLButtonElement
-    let inputText = target.value
-    if (inputText == '') {
-      this.championsService.getChampions(0, 10).subscribe(champions => {
-        this.championList = champions
-        this.pageLength = 162
-        this.searchNode = true
-      })
-    } else {
+  championSearch() {
+    if (this.searchText.value) {
       this.pageIndex = 0
-      this.championsService.findChampion(inputText).subscribe(champions => {
+      this.championsService.findChampion(this.searchText.value).subscribe(champions => {
         this.championSearchList = champions
         this.championList = this.championSearchList.slice(0, 10)
         this.pageLength = this.championSearchList.length
         this.searchNode = false
       })
+      return
     }
+
+    this.championsService.getChampions(0, 10).subscribe(champions => {
+      this.championList = champions
+      this.pageLength = 162
+      this.searchNode = true
+    })
   }
 }
