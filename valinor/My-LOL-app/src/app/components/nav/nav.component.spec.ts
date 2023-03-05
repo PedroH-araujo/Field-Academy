@@ -20,12 +20,12 @@ describe('NavComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it('can load instance', () => {
+  it('Deve carregar a página', () => {
     expect(component).toBeTruthy();
   });
 
   describe('ngOnInit', () => {
-    it('makes expected calls', () => {
+    it('Deve chamar a função ao iniciar', () => {
       const championServiceStub: ChampionService = fixture.debugElement.injector.get(
         ChampionService
       );
